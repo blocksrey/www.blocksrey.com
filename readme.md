@@ -1,1 +1,1 @@
-サイト
+サイト made in HTML.

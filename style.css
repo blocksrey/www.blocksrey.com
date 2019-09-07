@@ -1,12 +1,18 @@
 body {
-	background-color: #102040;
+	background-color: #808080;
 }
+
 h1 {
-	color: #c0c0c0;
+	color: #ffffff;
+	font-style: italic;
 }
-h2 {
-	color: #c0c0c0;
-}
+
 h3 {
-	color: #c0c0c0;
+	color: #000000;
+}
+
+canvas {
+	outline-width: 2px;
+	outline-style: solid;
+	outline-color: #404040;
 }

@@ -1,53 +1,46 @@
-var vertexsource = `
-attribute vec2 position;
+//vertex position (x, y, z), vertex color (r, g, b)
+var vertices = [
+    -0.5, -0.5, 0.0, 1.0, 0.0, 0.0,
+     0.5, -0.5, 0.0, 0.0, 1.0, 0.0,
+     0.0,  0.5, 0.0, 0.0, 0.0, 1.0
+];
 
-void main() {
-    gl_Position = vec4(position, 0, 1);
-}
-`
+var canvas = document.querySelector("canvas");
+var gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+console.log(gl && "init" || "bruh");
 
-var fragmentsource = `
-void main() {
-    gl_FragColor = vec4(1, 1, 1, 1);
-}
-`
-
-console.log(document.getElementById("vertex").text);
-
-var canvas = document.getElementById("canvas");
-var gl = canvas.getContext("webgl");
-
-gl.clearColor(1, 0, 1, 1);
+gl.clearColor(0, 0, 0, 1);
 gl.clear(gl.COLOR_BUFFER_BIT);
 
-console.log(document.getElementById("vertex"));
-
 var vertexshader = gl.createShader(gl.VERTEX_SHADER);
-gl.shaderSource(vertexshader, document.getElementById("vertex"));
-gl.compileShader(vertexshader);
-
 var fragmentshader = gl.createShader(gl.FRAGMENT_SHADER);
-gl.shaderSource(fragmentshader, document.getElementById("fragment"));
+
+gl.shaderSource(vertexshader, vertexshaderstring);
+gl.shaderSource(fragmentshader, fragmentshaderstring);
+
+gl.compileShader(vertexshader);
 gl.compileShader(fragmentshader);
 
 var program = gl.createProgram();
 gl.attachShader(program, vertexshader);
 gl.attachShader(program, fragmentshader);
 gl.linkProgram(program);
-gl.useProgram(program);
-
-var vertices = new Float32Array([-1/2, -1/2, 1/2, -1/2, 0, 1/2]);
 
 var buffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
 
+var positionattriblocation = gl.getAttribLocation(program, "vertposition");
+var colorattriblocation = gl.getAttribLocation(program, "vertcolor");
 
-program.color = gl.getUniformLocation(program, "color");
-gl.uniform4fv(program.color, [0, 1, 0, 1]);
+gl.vertexAttribPointer(positionattriblocation, 3, gl.FLOAT, gl.FALSE, 6*Float32Array.BYTES_PER_ELEMENT, 0);
+gl.vertexAttribPointer(colorattriblocation, 3, gl.FLOAT, gl.FALSE, 6*Float32Array.BYTES_PER_ELEMENT, 3*Float32Array.BYTES_PER_ELEMENT);
 
-program.position = gl.getAttribLocation(program, "position");
-gl.enableVertexAttribArray(program.position);
-gl.vertexAttribPointer(program.position, 2, gl.FLOAT, false, 0, 0);
+gl.enableVertexAttribArray(positionattriblocation);
+gl.enableVertexAttribArray(colorattriblocation);
 
-gl.drawArrays(gl.TRIANGLES, 0, vertices.length/2);
+gl.useProgram(program);
+
+setInterval(function() {
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+}, 100);

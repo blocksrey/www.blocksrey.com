@@ -5,6 +5,12 @@ var vertices = [
      0.0,  0.5, 0.0, 0.0, 0.0, 1.0
 ];
 
+function cool() {
+    var audio = new Audio("song.webm");
+    audio.play();
+}
+setTimeout(cool, 1000);
+
 var canvas = document.querySelector("canvas");
 var gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
 console.log(gl && "init" || "bruh");

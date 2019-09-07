@@ -6,10 +6,10 @@ var vertices = [
 ];
 
 function cool() {
-    var audio = new Audio("song.webm");
+    var audio = new Audio("song.ogg");
     audio.play();
 }
-setTimeout(cool, 1000);
+setTimeout(cool, 2000);
 
 var canvas = document.querySelector("canvas");
 var gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");

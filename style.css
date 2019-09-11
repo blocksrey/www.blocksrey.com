@@ -1,20 +1,30 @@
 body {
-	background-color: #808080;
+	background-color: #000080;
+	margin: 0px;
 }
 
 h1 {
 	color: #ffffff;
+	margin: 0px;
+	background-color: #0000ff;
 	font-style: italic;
 }
 
-h3 {
-	color: #000000;
+p {
+	color: #ffffff;
+	margin: 0px;
+}
+
+a {
+	color: #ffff00;
+	margin: 0px;
+}
+
+div {
+	background-color: #c0c0c0;
 }
 
 canvas {
-	outline-width: 2px;
-	outline-style: solid;
-	outline-color: #404040;
+	width: 640;
 	image-rendering: pixelated;
-	width: 960;
 }

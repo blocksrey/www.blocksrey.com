@@ -1,3 +1,7 @@
+//cached functions
+var sin = Math.sin;
+var cos = Math.cos;
+
 //vertex position (x, y, z), vertex color (r, g, b)
 var vertices = [
     -0.5, -0.5, 0.0, 1.0, 0.0, 0.0,
@@ -10,7 +14,6 @@ var gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
 console.log(gl && "init" || "bruh");
 
 gl.clearColor(0, 0, 0, 1);
-gl.clear(gl.COLOR_BUFFER_BIT);
 
 var vertexshader = gl.createShader(gl.VERTEX_SHADER);
 var fragmentshader = gl.createShader(gl.FRAGMENT_SHADER);
@@ -41,6 +44,31 @@ gl.enableVertexAttribArray(colorattriblocation);
 
 gl.useProgram(program);
 
+var worlduniformlocation = gl.getUniformLocation(program, "mworld");
+var viewuniformlocation  = gl.getUniformLocation(program, "mview");
+var projuniformlocation  = gl.getUniformLocation(program, "mproj");
+
+var world = ident(4);
+var view  = ident(4);
+var proj  = ident(4);
+
+var near = 0;
+var far = 100;
+
+proj = [
+    1, 0, 0             , 0                        ,
+    0, 1, 0             , 0                        ,
+    0, 0, 2/(near - far), (far + near)/(near - far),
+    0, 0, 0             , 1
+];
+
 setInterval(function() {
+    var t1 = Date.now()/1000;
+    //world = [cos(t1), 0, sin(t1), 0, 0, 1, 0, 0, -sin(t1), 0, cos(t1), 0, 0, 0, 0, 1];
+    view = [cos(t1), 0, sin(t1), 0, 0, 1, 0, 0, -sin(t1), 0, cos(t1), 0, 0, 0, 0, 1];
+    gl.uniformMatrix4fv(worlduniformlocation, gl.FALSE, world);
+    gl.uniformMatrix4fv(viewuniformlocation, gl.FALSE, view);
+    gl.uniformMatrix4fv(projuniformlocation, gl.FALSE, proj);
+    gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
-}, 100);
+}, 0);

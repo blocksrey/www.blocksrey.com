@@ -15,4 +15,6 @@ canvas {
 	outline-width: 2px;
 	outline-style: solid;
 	outline-color: #404040;
+	image-rendering: pixelated;
+	width: 960;
 }

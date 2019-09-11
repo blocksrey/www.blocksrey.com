@@ -1,17 +1,27 @@
-var mat2ident = [
-    1, 0,
-    0, 1
-];
+var floor = Math.floor;
 
-var mat3ident = [
-    1, 0, 0,
-    0, 1, 0,
-    0, 0, 1
-];
+function indpos(i, n) {
+    return [i%n, floor(i/n)];
+}
 
-var mat4ident = [
-    1, 0, 0, 0,
-    0, 1, 0, 0,
-    0, 0, 1, 0,
-    0, 0, 0, 1
-];
+function posind(x, y, n) {
+    return x%n + y%n*n;
+}
+
+function ident(n) {
+    var f = [];
+    for (var i = 0; i < n*n; ++i) {
+        var p = indpos(i, n);
+        f[i] = p[0] == p[1] ? 1 : 0;
+    }
+    return f;
+}
+
+function matmatmul(a, b) {
+    var f = [];
+    var n = a.length;
+    for (var i = 0; i < n*n; ++i) {
+
+    }
+    return f;
+}

@@ -1,6 +1,7 @@
 //cached functions
-var sin = Math.sin;
-var cos = Math.cos;
+var print = console.log;
+var sin   = Math.sin;
+var cos   = Math.cos;
 
 //vertex position (x, y, z), vertex color (r, g, b)
 var vertices = [
@@ -9,9 +10,17 @@ var vertices = [
      0.0,  0.5, 0.0, 0.0, 0.0, 1.0
 ];
 
+function calcgrade(n) {
+    return n < 60 && "F" ||
+           n < 70 && "D" ||
+           n < 80 && "C" ||
+           n < 90 && "B" ||
+           "A";
+}
+
 var canvas = document.querySelector("canvas");
 var gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-console.log(gl && "init" || "bruh");
+print(gl && "init" || "bruh");
 
 gl.clearColor(0, 0, 0, 1);
 
@@ -44,9 +53,9 @@ gl.enableVertexAttribArray(colorattriblocation);
 
 gl.useProgram(program);
 
-var worlduniformlocation = gl.getUniformLocation(program, "mworld");
-var viewuniformlocation  = gl.getUniformLocation(program, "mview");
-var projuniformlocation  = gl.getUniformLocation(program, "mproj");
+var worlduniformlocation = gl.getUniformLocation(program, "world");
+var viewuniformlocation  = gl.getUniformLocation(program, "view");
+var projuniformlocation  = gl.getUniformLocation(program, "proj");
 
 var world = ident(4);
 var view  = ident(4);
@@ -65,6 +74,7 @@ proj = [
 setInterval(function() {
     var t1 = Date.now()/1000;
     //world = [cos(t1), 0, sin(t1), 0, 0, 1, 0, 0, -sin(t1), 0, cos(t1), 0, 0, 0, 0, 1];
+    //view = [cos(t1), 0, sin(t1), 0, 0, 1, 0, 0, -sin(t1), 0, cos(t1), 0, 0, 0, 0, 1];
     view = [cos(t1), 0, sin(t1), 0, 0, 1, 0, 0, -sin(t1), 0, cos(t1), 0, 0, 0, 0, 1];
     gl.uniformMatrix4fv(worlduniformlocation, gl.FALSE, world);
     gl.uniformMatrix4fv(viewuniformlocation, gl.FALSE, view);

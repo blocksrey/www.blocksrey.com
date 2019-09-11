@@ -1,30 +1,40 @@
 body {
+	margin: auto;
 	background-color: #000080;
-	margin: 0px;
 }
 
 h1 {
+	margin: auto;
+	text-align: center;
 	color: #ffffff;
-	margin: 0px;
 	background-color: #0000ff;
 	font-style: italic;
 }
 
 p {
+	margin: auto;
 	color: #ffffff;
-	margin: 0px;
 }
 
 a {
+	margin: auto;
 	color: #ffff00;
-	margin: 0px;
+}
+
+img {
+	margin: auto;
+	display: block;
 }
 
 div {
+	margin: auto;
 	background-color: #c0c0c0;
+	width: 512;
+	height: 1024;
 }
 
 canvas {
-	width: 640;
+	margin: auto;
+	display: block;
 	image-rendering: pixelated;
 }

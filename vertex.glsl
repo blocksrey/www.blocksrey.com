@@ -6,12 +6,12 @@ varying vec3 fragcolor;
 attribute vec2 vertposition;
 attribute vec3 vertcolor;
 
-uniform mat4 mworld;
-uniform mat4 mview;
-uniform mat4 mproj;
+uniform mat4 world;
+uniform mat4 view;
+uniform mat4 proj;
 
 void main() {
     fragcolor = vertcolor;
-    gl_Position = mproj*mview*mworld*vec4(vertposition, 0, 1);
+    gl_Position = proj*view*world*vec4(vertposition, 0, 1);
 }
 `

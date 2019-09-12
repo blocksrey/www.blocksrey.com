@@ -1,40 +1,35 @@
+html {
+	background-color: #000040;
+}
+
 body {
-	margin: auto;
 	background-color: #000080;
+	margin-left: auto;
+	margin-right: auto;
+	width: 640px;
 }
 
 h1 {
-	margin: auto;
-	text-align: center;
 	color: #ffffff;
-	background-color: #0000ff;
 	font-style: italic;
+	text-align: center;
+	text-shadow: 0px 0px 8px #ffffff;
+}
+
+canvas {
+	image-rendering: pixelated;
+	width: 100%;
 }
 
 p {
-	margin: auto;
 	color: #ffffff;
 }
 
 a {
-	margin: auto;
 	color: #ffff00;
 }
 
 img {
-	margin: auto;
 	display: block;
-}
-
-div {
 	margin: auto;
-	background-color: #c0c0c0;
-	width: 512;
-	height: 1024;
-}
-
-canvas {
-	margin: auto;
-	display: block;
-	image-rendering: pixelated;
 }

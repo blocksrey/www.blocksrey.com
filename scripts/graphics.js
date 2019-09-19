@@ -12,8 +12,8 @@ let graphics = [];
     let canvas = document.querySelector("canvas");
     let gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
     print(gl && "gl_init" || "gl_bruh");
-
-    gl.clearColor(0, 0, 0, 1);
+    
+    gl.clearColor(0, 0, 1/8, 1);
 
     let vertexshader = gl.createShader(gl.VERTEX_SHADER);
     let fragmentshader = gl.createShader(gl.FRAGMENT_SHADER);

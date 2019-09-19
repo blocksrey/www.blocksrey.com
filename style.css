@@ -4,9 +4,8 @@ html {
 
 body {
 	background-color: #000080;
-	margin-left: auto;
-	margin-right: auto;
-	width: 640px;
+	margin: auto;
+	width: 640;
 }
 
 h1 {
@@ -17,7 +16,7 @@ h1 {
 
 canvas {
 	image-rendering: pixelated;
-	width: 100%;
+	width: inherit;
 }
 
 p {
@@ -26,9 +25,4 @@ p {
 
 a {
 	color: #ffff00;
-}
-
-img {
-	display: block;
-	margin: auto;
 }

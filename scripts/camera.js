@@ -9,6 +9,6 @@ let camera = [];
     ];
 
     camera.update = function(dt) {
-
+        
     };
 }

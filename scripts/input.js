@@ -21,7 +21,7 @@ let input = [];
         input.keyspressed[event.key] = false;
     };
     addEventListener("keyup", onkeyup);
-
+    
     input.update = function(dt) {
         let nx = input.keyspressed["a"] ? 1 : 0;
         let px = input.keyspressed["d"] ? 1 : 0;

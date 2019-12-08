@@ -5,14 +5,14 @@ let graphics = [];
 
     let vertices = [
         -1/2, -1/2, 0, 1, 0, 0,
-         1/2, -1/2, 0, 0, 1, 0,
-           0,  1/2, 0, 0, 0, 1
+         1/2, -1/2, 0, 1, 1, 0,
+           0,  1/2, 0, 1, 0, 1
     ];
 
     let canvas = document.querySelector("canvas");
     let gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
     print(gl && "gl_init" || "gl_bruh");
-    
+
     gl.clearColor(0, 0, 1/8, 1);
 
     let vertexshader = gl.createShader(gl.VERTEX_SHADER);

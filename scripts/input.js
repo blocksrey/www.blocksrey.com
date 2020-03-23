@@ -23,14 +23,14 @@ let input = [];
     addEventListener("keyup", onkeyup);
     
     input.update = function(dt) {
-        let nx = input.keyspressed["a"] ? 1 : 0;
         let px = input.keyspressed["d"] ? 1 : 0;
-        let ny = input.keyspressed["q"] ? 1 : 0;
+        let nx = input.keyspressed["a"] ? 1 : 0;
         let py = input.keyspressed["e"] ? 1 : 0;
-        let nz = input.keyspressed["s"] ? 1 : 0;
+        let ny = input.keyspressed["q"] ? 1 : 0;
         let pz = input.keyspressed["w"] ? 1 : 0;
-        camera.position[0] += dt*(px - nx);
-        camera.position[1] += dt*(py - ny);
-        camera.position[2] += dt*(pz - nz);
+        let nz = input.keyspressed["s"] ? 1 : 0;
+        camera.position[0] -= 3*dt*(px - nx);
+        camera.position[1] -= 3*dt*(py - ny);
+        camera.position[2] -= 3*dt*(pz - nz);
     };
 }

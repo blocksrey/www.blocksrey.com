@@ -28,7 +28,7 @@ let main = [];
     //constants
     let pi = Math.PI;
 
-    let proj = mat.calcproj(pi/2, 320/240);
+    let proj = mat.calcproj(2/5*pi, 240/320);
 
     let t0 = tick()/1000;
     let update = function() {

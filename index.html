@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>nullgame</title>
@@ -5,18 +6,31 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<h1>nullgame</h1>
-		<canvas width="320" height="240"></canvas>
-		<p>Welcome to nullgame. The future of this website is undetermined, but WebGL implementation is currently in progress. <a href="https://github.com/blocksrocks">Github</a></p>
-		<p>ヌルゲームへようこそ。こちらのサイトの将来は未定ですが、WebGLは開発されつつあります。</p>
-		<script src="shaders/vert.glsl"></script>
-		<script src="shaders/frag.glsl"></script>
-		<script src="scripts/vec.js"></script>
-		<script src="scripts/mat.js"></script>
-		<script src="scripts/quat.js"></script>
-		<script src="scripts/camera.js"></script>
-		<script src="scripts/input.js"></script>
-		<script src="scripts/graphics.js"></script>
-		<script src="scripts/sanryuu.js"></script>
+		<img id="title" src="images/nullgame.gif"/>
+		<div class="section" id="header">
+			<p>Welcome to nullgame. The future of this website is undetermined, but WebGL implementation is currently in progress. <a href="https://github.com/blocksrocks">Github</a></p>
+			<p>ヌルゲームへようこそ。こちらのサイトの将来は未定ですが、WebGLは開発されつつあります。</p>
+		</div>
+		<div id="main">
+			<div class="section" id="right">testing testing </div>
+			<div class="section" id="center">
+				<canvas width="320" height="200"></canvas>
+				<p>This is some WebGL stuff</p>
+			</div>
+		</div>
+		<div class="section" id="footer">
+			<p>YAY ITS A FOOTER!</p>
+		</div>
 	</body>
+
+	<script src="shaders/vert.glsl"></script>
+	<script src="shaders/frag.glsl"></script>
+	<script src="scripts/vec.js"></script>
+	<script src="scripts/mat.js"></script>
+	<script src="scripts/quat.js"></script>
+	<script src="scripts/camera.js"></script>
+	<script src="scripts/input.js"></script>
+	<script src="scripts/graphics.js"></script>
+	<script src="scripts/sanryuu.js"></script>
+
 </html>

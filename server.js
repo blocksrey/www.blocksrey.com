@@ -13,17 +13,26 @@ const types = {
 	js: "text/javascript",
 };
 
-var server = http
+function getRequestOrigin(request) {
+	return request.headers["x-forwarded-for"] || request.connection.remoteAddress;
+}
+
+http
 	.createServer(function (request, response) {
+		var origin = getRequestOrigin(request);
+		console.log(origin);
+		fs.appendFile("history", origin + "\n", function (error) {
+			if (error) console.log("Write error");
+		});
 		fs.readFile("." + request.url, function (error, data) {
-			if (error) response.end("You don't belong here...");
+			if (error) response.end(origin + ", you don't belong here...");
 			else {
 				var type =
 					types[request.url.substr(request.url.lastIndexOf(".") + 1)] ||
 					"text/plain";
 				response.setHeader("Content-Type", type);
 				response.end(data);
-				console.log(request.url, type);
+				//console.log(request.url, type);
 			}
 		});
 	})

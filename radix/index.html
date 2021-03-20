@@ -1,19 +1,30 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Radix</title>
-		<meta charset="utf-8"/>
-		<link rel="stylesheet" href="style.css">
+		<meta charset="utf-8" />
+		<link href="style.css" rel="stylesheet" />
 	</head>
 	<body>
 		<center>
-			<a href="../index.html">nullgame</a>
+			<a href="../nullgame/index.html">nullgame</a>
 		</center>
-		<p>The things below are text boxes. So you can type values into them. Integer values are expected to be inputted. This will basically use an algorithm to convert decimal into a base-n representation. If you see "OOPS" then you probably are putting really poor values into the parameters. Base should be greater than 1. And don't leave any values blank</p>
+		<p>
+			The things below are text boxes. So you can type values into them. Integer
+			values are expected to be inputted. This will basically use an algorithm
+			to convert decimal into a base-n representation. If you see "OOPS" then
+			you probably are putting really poor values into the parameters. Base
+			should be greater than 1. And don't leave any values blank
+		</p>
 		<p>Decimal:</p>
-		<input id="decimal"></input>
+		<form>
+			<input id="decimal" />
+		</form>
 		<p>Base:</p>
-		<input id="base"></input>
-		<canvas width="320" height="240"></canvas>
+		<form>
+			<input id="base" />
+		</form>
+		<canvas height="240" width="320"></canvas>
 		<script src="main.js"></script>
 	</body>
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>nullgame</title>
+		<meta charset="utf-8" />
+		<link href="images/favicon.ico" rel="icon" />
+		<link href="style.css" rel="stylesheet" />
+	</head>
+	<body>
+		<a href="index.html"><img id="title" src="images/nullgame.gif" /></a>
+		<div class="section" id="header">
+			<p>
+				Welcome to nullgame. The future of this website is undetermined, but
+				WebGL implementation is currently in progress.
+			</p>
+			<p>
+				ヌルゲームへようこそ。こちらのサイトの将来は未定ですが、WebGLは開発されつつあります。
+			</p>
+		</div>
+		<div id="main">
+			<div class="section" id="right">
+				<p>Navigation</p>
+				<a href="../2204355/index.html">2204355</a><br />
+				<br />
+				<a href="../radix/index.html">Radix</a><br />
+				<br />
+				<a href="../villagerprobability/index.html">Villager Probability</a
+				><br />
+				<br />
+				<p>Media</p>
+				<a href="https://github.com/blocksrey"
+					><img src="https://github.githubassets.com/favicon.ico"
+				/></a>
+				<a href="https://twitter.com/blocksrey"
+					><img src="https://abs.twimg.com/favicons/twitter.ico"
+				/></a>
+				<a href="https://blocksrey.itch.io/"
+					><img src="https://itch.io/favicon.ico"
+				/></a>
+				<a href="https://nullgame.booth.pm/"
+					><img src="https://asset.booth.pm/favicon.ico"
+				/></a>
+			</div>
+			<div class="section" id="center">
+				<canvas height="200" width="320"></canvas>
+				<p>
+					This is some WebGL stuff, and I don't really know what else to write
+					about here.
+				</p>
+				<a>COVID-19 Statistics:</a><br />
+				<a id="active">Fetching...</a><br />
+				<a id="recovered"></a><br />
+				<a id="deaths"></a>
+			</div>
+		</div>
+		<div class="section" id="footer">
+			<p>
+				So basically, my name is Jeffrey Skinner and I'm a programmer.
+				Developing video games is my passion, although I've always wanted to
+				make a website. Furthermore, this is the masterpiece I've come up with.
+				My plan is to add random throwback internet anomolies around the 2010
+				era, so feel free to give recommendations!
+			</p>
+		</div>
+		<script src="shaders/vert.glsl"></script>
+		<script src="shaders/frag.glsl"></script>
+		<script src="scripts/vec.js"></script>
+		<script src="scripts/mat.js"></script>
+		<script src="scripts/quat.js"></script>
+		<script src="scripts/camera.js"></script>
+		<script src="scripts/input.js"></script>
+		<script src="scripts/graphics.js"></script>
+		<script src="scripts/sanryuu.js"></script>
+		<script>
+			let xhr = new XMLHttpRequest();
+			xhr.open("get", "https://covid19.mathdro.id/api");
+			xhr.send();
+			xhr.onload = function () {
+				let obj = JSON.parse(xhr.response);
+				document.getElementById("active").innerHTML =
+					"Active cases: " + obj.confirmed.value;
+				document.getElementById("recovered").innerHTML =
+					"Recoveries: " + obj.recovered.value;
+				document.getElementById("deaths").innerHTML =
+					"Fatalities: " + obj.deaths.value;
+			};
+		</script>
+	</body>
+</html>

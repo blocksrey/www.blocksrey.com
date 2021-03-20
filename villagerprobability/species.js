@@ -1,13 +1,5 @@
 let spec_group = {
-	Alligators: [
-		"Alfonso",
-		"Alli",
-		"Boots",
-		"Del",
-		"Drago",
-		"Gayle",
-		"Sly"
-	],
+	Alligators: ["Alfonso", "Alli", "Boots", "Del", "Drago", "Gayle", "Sly"],
 	Anteaters: [
 		"Annabelle",
 		"Annalisa",
@@ -50,14 +42,7 @@ let spec_group = {
 		"Sparro",
 		"Twiggy",
 	],
-	Bulls: [
-		"Angus",
-		"Coach",
-		"Rodeo",
-		"Stu",
-		"T-Bone",
-		"Vic",
-	],
+	Bulls: ["Angus", "Coach", "Rodeo", "Stu", "T-Bone", "Vic"],
 	Cats: [
 		"Ankha",
 		"Bob",
@@ -94,12 +79,7 @@ let spec_group = {
 		"Knox",
 		"Plucky",
 	],
-	Cows: [
-		"Naomi",
-		"Norma",
-		"Patty",
-		"Tipper",
-	],
+	Cows: ["Naomi", "Norma", "Patty", "Tipper"],
 	Cubs: [
 		"Barold",
 		"Bluebear",
@@ -242,15 +222,7 @@ let spec_group = {
 		"Rodney",
 		"Soleil",
 	],
-	Hippos: [
-		"Bertha",
-		"Biff",
-		"Bitty",
-		"Bubbles",
-		"Harry",
-		"Hippeux",
-		"Rocco",
-	],
+	Hippos: ["Bertha", "Biff", "Bitty", "Bubbles", "Harry", "Hippeux", "Rocco"],
 	Horses: [
 		"Annalise",
 		"Buck",
@@ -289,15 +261,7 @@ let spec_group = {
 		"Sydney",
 		"Yuka",
 	],
-	Lions: [
-		"Bud",
-		"Elvis",
-		"Leopold",
-		"Lionel",
-		"Mott",
-		"Rex",
-		"Rory",
-	],
+	Lions: ["Bud", "Elvis", "Leopold", "Lionel", "Mott", "Rex", "Rory"],
 	Mice: [
 		"Anicotti",
 		"Bella",
@@ -325,11 +289,7 @@ let spec_group = {
 		"Simon",
 		"Tammi",
 	],
-	Octopuses: [
-		"Marina",
-		"Octavian",
-		"Zucker",
-	],
+	Octopuses: ["Marina", "Octavian", "Zucker"],
 	Ostriches: [
 		"Blanche",
 		"Cranston",
@@ -396,14 +356,7 @@ let spec_group = {
 		"Snake",
 		"Tiffany",
 	],
-	Rhinoes: [
-		"Hornsby",
-		"Merengue",
-		"Renée",
-		"Rhonda",
-		"Spike",
-		"Tank",
-	],
+	Rhinoes: ["Hornsby", "Merengue", "Renée", "Rhonda", "Spike", "Tank"],
 	Sheep: [
 		"Baabara",
 		"Cashmere",
@@ -468,15 +421,15 @@ let spec_group = {
 //spec: name of species
 //group: collection of specific species type
 
-let rand  = Math.random;
+let rand = Math.random;
 let floor = Math.floor;
 
-let grouptot  = 0;
+let grouptot = 0;
 let ind_group = [];
 let name_bool = {};
 
 for (let spec in spec_group) {
-	let group = spec_group[spec]
+	let group = spec_group[spec];
 	ind_group[grouptot] = spec_group[spec];
 	++grouptot;
 	for (ind in spec_group[spec]) {
@@ -485,7 +438,7 @@ for (let spec in spec_group) {
 }
 
 function randint(range) {
-	return floor(range*rand());
+	return floor(range * rand());
 }
 
 function arrayrand(arr) {
@@ -502,6 +455,6 @@ function randomselectiters(name) {
 		while (true) {
 			++iter;
 			if (randomselect() == name) return iter;
-		};	
+		}
 	}
 }

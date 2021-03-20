@@ -2,17 +2,17 @@ let mat = [];
 
 {
     let floor = Math.floor;
-    let tan   = Math.tan;
+    let tan = Math.tan;
 
-    let indpos = function() {
-        return [i%n, floor(i/n)];
+    let indpos = function () {
+        return [i % n, floor(i / n)];
     };
 
-    let posind = function(p, n) {
-        return p[0]%n + p[1]%n*n;
+    let posind = function (p, n) {
+        return (p[0] % n) + (p[1] % n) * n;
     };
 
-    mat.ident = function(n) {
+    mat.ident = function (n) {
         let f = [];
         for (let r = 0; r < n; ++r) {
             f[r] = [];
@@ -23,7 +23,7 @@ let mat = [];
         return f;
     };
 
-    mat.trans = function(m) {
+    mat.trans = function (m) {
         let f = [];
         let n = m.length;
         for (let r = 0; r < n; ++r) {
@@ -35,7 +35,7 @@ let mat = [];
         return f;
     };
 
-    let expand = function(m) {
+    let expand = function (m) {
         let f = [];
         let n = m.length;
         for (let r = 0; r < n; ++r) {
@@ -46,7 +46,7 @@ let mat = [];
         return f;
     };
 
-    mat.transexpand = function(m) {
+    mat.transexpand = function (m) {
         let f = [];
         let n = m.length;
         for (let r = 0; r < n; ++r) {
@@ -57,29 +57,21 @@ let mat = [];
         return f;
     };
 
-    let matmul = function(a, b) {
+    let matmul = function (a, b) {};
 
-    };
+    let inverse = function (m) {};
 
-    let inverse = function(m) {
+    let det = function (m) {};
 
-    };
+    let rowred = function (a, b) {};
 
-    let det = function(m) {
-
-    };
-
-    let rowred = function(a, b) {
-
-    };
-
-    mat.calcproj = function(angle, aspect) {
-        let view = 1/tan(angle/2);
+    mat.calcproj = function (angle, aspect) {
+        let view = 1 / tan(angle / 2);
         return [
-            [aspect*view,    0,  0, 0],
-            [          0, view,  0, 0],
-            [          0,    0,  0, 0],
-            [          0,    0,  1, 0]
+            [aspect * view, 0, 0, 0],
+            [0, view, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 1, 0],
         ];
     };
 }

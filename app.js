@@ -1,7 +1,15 @@
-const http = require("http");
+//Node.bs by Jeffrey Skinner
+
+const https = require("https"); //More like, express
 const fs = require("fs");
 
-const port = 3000;
+const PORT = 3000;
+
+const options = {
+	key: fs.readFileSync("ssl/private.key.pem"),
+	cert: fs.readFileSync("ssl/domain.cert.pem"),
+	ca: fs.readFileSync("ssl/intermediate.cert.pem"),
+};
 
 const types = {
 	html: "text/html",
@@ -15,28 +23,49 @@ const types = {
 };
 
 function getRequestOrigin(request) {
-	return request.headers["x-forwarded-for"] || request.connection.remoteAddress;
+	return request.headers["x-forwarded-for"] || request.connection.remoteAddress; //Still don't get this
 }
 
-http
-	.createServer(function (request, response) {
+function getRequestDestinationMIME(request) {
+	return (
+		types[request.url.substr(request.url.lastIndexOf(".") + 1)] || "text/plain" //Don't like anything after ||
+	);
+}
+
+//readFileAsync?
+function getRequestFileData(URL) {
+	fs.readFile("." + URL, (error, data) => {
+		if (error) return null;
+		else return data;
+	});
+}
+
+https
+	.createServer(options, (request, response) => {
 		var origin = getRequestOrigin(request);
-		console.log(origin);
-		fs.appendFile("history", origin + "\n", function (error) {
+		//console.log(origin);
+		fs.appendFile("history", origin + "\n", (error) => {
 			if (error) console.log("Write error");
 		});
-		fs.readFile("." + request.url, function (error, data) {
-			if (error) response.end(origin + ", you don't belong here...");
+		fs.readFile("." + request.url, (error, data) => {
+			if (error)
+				fs.readFile("." + request.url, (error, data) => {
+					if (error) response.end(origin + ", you don't belong here...");
+					else {
+						response.setHeader(
+							"Content-Type",
+							getRequestDestinationMIME(request)
+						);
+						response.end(data);
+					}
+				});
 			else {
-				var type =
-					types[request.url.substr(request.url.lastIndexOf(".") + 1)] ||
-					"text/plain";
-				response.setHeader("Content-Type", type);
+				//console.log(getRequestDestinationMIME(request));
+				response.setHeader("Content-Type", getRequestDestinationMIME(request));
 				response.end(data);
-				//console.log(request.url, type);
 			}
 		});
 	})
-	.listen(port);
+	.listen(PORT);
 
-console.log("Hosted on port: " + port);
+console.log("Hosted on port: " + PORT);

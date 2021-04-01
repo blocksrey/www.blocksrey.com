@@ -20,6 +20,7 @@ const types = {
 	css: "text/css",
 	js: "text/javascript",
 	wasm: "application/wasm",
+	otf: "font/otf",
 };
 
 function getRequestOrigin(request) {

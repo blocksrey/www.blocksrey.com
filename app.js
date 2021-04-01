@@ -3,7 +3,7 @@
 const https = require("https"); //More like, express
 const fs = require("fs");
 
-const PORT = 3000;
+const PORT = 443;
 
 const options = {
 	key: fs.readFileSync("ssl/private.key.pem"),

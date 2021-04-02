@@ -45,7 +45,7 @@ https
 	.createServer(options, (request, response) => {
 		var origin = getRequestOrigin(request);
 		//console.log(origin);
-		fs.appendFile("history", origin + "\n", (error) => {
+		fs.appendFile("dynamic/history", origin + "\n", (error) => {
 			if (error) console.log("Write error");
 		});
 		fs.readFile("." + request.url, (error, data) => {

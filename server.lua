@@ -62,6 +62,16 @@ local function readURLO(URLO)
 	end
 end
 
+local function readURLO(URLO)
+	if #URLO == 0 then
+		table.insert(URLO, DEFAULT_PAGE_FOLDER)
+		table.insert(URLO, DEFAULT_PAGE_FILE)
+	elseif not fetch(URLO) then
+		table.insert(URLO, 1, DEFAULT_PAGE_FOLDER)
+	end
+	return fetch(URLO)
+end
+
 local options = {
 	ca = readClose("ssl/intermediate.cert.pem");
 	cert = readClose("ssl/domain.cert.pem");

@@ -28,6 +28,29 @@ local function URLO_URLS(URLO)
 	return table.concat(URLO, "/")
 end
 
+local function URLS_URLSE(URLS)
+	return URLS:match("[^.]+$")
+end
+
+local URLSE_MIME_ = {}
+URLSE_MIME_.html = "text/html"
+URLSE_MIME_.css = "text/css"
+URLSE_MIME_.js = "text/javascript"
+URLSE_MIME_.ico = "image/x-icon"
+URLSE_MIME_.png = "image/png"
+URLSE_MIME_.jpg = "image/jpeg"
+URLSE_MIME_.gif = "image/gif"
+URLSE_MIME_.glsl = "text/plain"
+URLSE_MIME_.swf = "application/x-shockwave-flash"
+URLSE_MIME_.wasm = "application/wasm"
+
+local function URLS_MIME(URLS)
+	local URLSE = URLS_URLSE(URLS)
+	return
+		URLSE_MIME_[URLSE] or
+		print("No type for: "..URLS)
+end
+
 local cache = {}
 
 local function fetch(URLO)
@@ -79,7 +102,11 @@ local options = {
 }
 
 local function onRequest(request, response)
-	response:finish(readURLO(URLS_URLO(request.url)))
+	local data = readURLO(URLS_URLO(request.url))
+	if data then
+		response:setHeader("Content-Type", URLS_MIME(request.url))
+	end
+	response:finish(data)
 end
 
 https.createServer(options, onRequest):listen(443)

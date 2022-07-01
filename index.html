@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
 <HTML>
 	<HEAD>
-		<title>Blocksrey</title>
+		<TITLE>Blocksrey</TITLE>
 		<META CHARSET=utf-8>
-		<link HREF=images/favicon.ico REL=icon>
-		<link HREF=style.css REL=stylesheet>
+		<LINK HREF=images/favicon.ico REL=icon>
+		<LINK HREF=style.css REL=stylesheet>
 	</HEAD>
 	<BODY>
-		<A HREF=.><IMG ID=title SRC=images/nullgame.gif></A>
+		<A HREF=.><IMG ID=TITLE SRC=images/nullgame.gif></A>
 		<DIV CLASS=section ID=header>
 			<P>
 				Welcome to Blocksrey. The future of this website is undetermined, but
@@ -20,7 +20,7 @@
 		<DIV ID=main>
 			<DIV CLASS=section ID=right>
 				<P>Navigation</P>
-				<A HREF=CV/>CV</A><BR>
+				<A HREF=Resume/>Resume</A><BR>
 				<BR>
 				<A HREF=履歴書/>履歴書</A><BR>
 				<BR>
@@ -37,10 +37,10 @@
 				<A HREF=Discord/>Discord</A><BR>
 				<BR>
 				<P>Media</P>
-				<A HREF=http://GitHub.com/Blocksrey><IMG CLASS=FAV SRC=http://GitHub.com/favicon.ico></A>
-				<A HREF=http://Twitter.com/Blocksrey><IMG CLASS=FAV SRC=http://Twitter.com/favicon.ico></A>
-				<A HREF=http://Blocksrey.itch.io><IMG CLASS=FAV SRC=http://itch.io/favicon.ico></A>
-				<A HREF=http://nullgame.BOOTH.pm><IMG CLASS=FAV SRC=http://BOOTH.pm/favicon.ico></A>
+				<A HREF=https:GitHub.com/Blocksrey><IMG CLASS=FAV SRC=https:GitHub.com/favicon.ico></A>
+				<A HREF=https:Twitter.com/Blocksrey><IMG CLASS=FAV SRC=https:Twitter.com/favicon.ico></A>
+				<A HREF=https:Blocksrey.itch.io><IMG CLASS=FAV SRC=https:itch.io/favicon.ico></A>
+				<A HREF=https:nullgame.BOOTH.pm><IMG CLASS=FAV SRC=https:BOOTH.pm/favicon.ico></A>
 			</DIV>
 			<DIV CLASS=section ID=center>
 				<canvas WIDTH=400 HEIGHT=300></canvas>
@@ -69,7 +69,7 @@
 		<SCRIPT SRC=scripts/sanryuu.js></SCRIPT>
 		<SCRIPT>
 			let request = new XMLHttpRequest()
-			request.open("get", "https://covid19.mathdro.id/api")
+			request.open("get", "https:covid19.mathdro.id/api")
 			request.send()
 			request.onload = () => {
 				let obj = JSON.parse(request.response)

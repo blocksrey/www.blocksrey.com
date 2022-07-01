@@ -1,3 +1,7 @@
+* {
+	FONT-SIZE: 4MM;
+}
+
 HTML {
 	MARGIN: 0MM;
 	PADDING: 0MM;
@@ -24,6 +28,8 @@ IMG {
 
 	WIDTH: 3CM;
 	HEIGHT: 4CM;
+
+	float: RIGHT;
 }
 
 .HANKO {
@@ -31,37 +37,40 @@ IMG {
 	HEIGHT: 12.5MM;
 }
 
-.MAIN {
-	MARGIN: 0MM;
-	PADDING: 0MM;
-
-	border: 0.7MM SOLID;
-}
-
 HEADER {
-	MARGIN: 0MM;
+	MARGIN-TOP: 0MM;
 	PADDING: 0MM;
 
 	FONT-WEIGHT: BOLD;
-	font-size: 4MM;
+	FONT-SIZE: 4MM;
 }
 
 DIV {
-	MARGIN: 10MM;
-	PADDING: 0MM;
+	MARGIN: 0MM;
+	PADDING: 8MM;
+	PADDING-BOTTOM: 2MM;
 }
 
 .EXP {
 	MARGIN: 0MM;
 	PADDING: 0MM;
 
-	MARGIN-LEFT: 10MM;
-	MARGIN-BOTTOM: 5MM;
+	margin-left: 6MM;
+	margin-bottom: 4MM;
+}
+
+.EXPERIENCE {
+	display: inline-block;
+}
+
+.SKILLS {
+	text-align: right;
+	float: right;
 }
 
 A {
 	MARGIN: 0MM;
 	PADDING: 0MM;
 
-	TEXT-DECORATION: none;
+	TEXT-DECORATION: NONE;
 }

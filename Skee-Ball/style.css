@@ -1,22 +1,21 @@
 @font-face {
-	font-family: "Prata";
-	src: url("Prata-Regular.ttf");
+	font-family:'Prata';
+	src:url('Prata-Regular.ttf');
 }
 
 body {
-	margin: 0;
-	background-color: #ff8080;
+	background-color:#ff8080;
 }
 
 canvas {
-	background-color: white;
+	background-color:white;
 }
 
 div {
-	background-color: black;
+	background-color:black;
 }
 
 button {
-	width: 64px;
-	height: 32px;
+	width:64px;
+	height:32px;
 }

@@ -1,7 +1,7 @@
-# blocksrey.com
+# je.gy
 ## _The shittiest place on the web_
 
-blocksrey.com is a shitty website made by a non-web developer. The website is powered by cum.
+je.gy is a shitty website made by a non-web developer. The website is powered by cum.
 
 ## Pre-2008ish era stuff
 

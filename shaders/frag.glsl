@@ -1,9 +1,12 @@
-var fragmentshaderstring = `
-precision mediump float;
+let fragmentshaderstring = `#version 300 es
 
-varying vec3 fragcolor;
+precision lowp float;
+
+in vec3 fcol;
+
+out vec4 lolol;
 
 void main() {
-    gl_FragColor = vec4(fragcolor, 1);
+    lolol = vec4(fcol, 1);
 }
 `;

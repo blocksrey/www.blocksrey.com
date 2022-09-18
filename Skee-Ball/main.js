@@ -1,18 +1,16 @@
-let canvas = document.querySelector("canvas")
---canvas.width
---canvas.height
-let vsx = canvas.width
-let vsy = canvas.height
+let canvas=document.querySelector('canvas')
+let vsx=canvas.width
+let vsy=canvas.height
 
-let context = canvas.getContext("2d")
-context.textAlign = "center"
+let context=canvas.getContext('2d')
+context.textAlign='center'
 
 function tick() {
-	return new Date().getTime() / 1000
+	return new Date().getTime()/1000
 }
 
 function hash2(a, b) {
-	return a + ((a + b) * (a + b + 1)) / 2
+	return a+((a+b)*(a+b+1))/2
 }
 
 function getTargetData(
@@ -22,61 +20,61 @@ function getTargetData(
 	ballsRemaining,
 	currentScore
 ) {
-	let id = hash2(ballsRemaining, currentScore)
-	let data = cache[id]
+	let id=hash2(ballsRemaining, currentScore)
+	let data=cache[id]
 	if (data) {
 		return data
 	}
 
-	//console.log("made a new thing", ballsRemaining, currentScore)
+	//console.log('made a new thing', ballsRemaining, currentScore)
 
 	if (ballsRemaining === 0) {
-		let newData = {
-			bestTarget: "No Solution",
-			ticketExpectation: scoreToTickets(currentScore),
+		let newData={
+			bestTarget:'No Solution',
+			ticketExpectation:scoreToTickets(currentScore),
 		}
-		cache[id] = newData
+		cache[id]=newData
 		return newData
 	}
 
-	let bestTarget = "No Solution"
-	let bestTicketExpectation = 0
+	let bestTarget='No Solution'
+	let bestTicketExpectation=0
 	for (let target in targets) {
-		let probabilities = targets[target]
+		let probabilities=targets[target]
 
-		let totalSamples = 0
-		let totalTickets = 0
+		let totalSamples=0
+		let totalTickets=0
 		for (score in probabilities) {
-			let samples = probabilities[score]
-			let nextData = getTargetData(
+			let samples=probabilities[score]
+			let nextData=getTargetData(
 				scoreToTickets,
 				targets,
 				cache,
 				ballsRemaining - 1,
-				currentScore + Number(score)
+				currentScore+Number(score)
 			)
-			totalSamples = totalSamples + samples
-			totalTickets = totalTickets + samples * nextData.ticketExpectation
+			totalSamples=totalSamples+samples
+			totalTickets=totalTickets+samples*nextData.ticketExpectation
 		}
 
-		let ticketExpectation = totalTickets / totalSamples
+		let ticketExpectation=totalTickets/totalSamples
 		if (ticketExpectation > bestTicketExpectation) {
-			bestTarget = target
-			bestTicketExpectation = ticketExpectation
+			bestTarget=target
+			bestTicketExpectation=ticketExpectation
 			//console.log(ballsRemaining, currentScore, target, totalTickets, totalSamples)
 		}
 	}
 
-	let newData = {
-		bestTarget: bestTarget,
-		ticketExpectation: bestTicketExpectation,
+	let newData={
+		bestTarget:bestTarget,
+		ticketExpectation:bestTicketExpectation,
 	}
-	cache[id] = newData
+	cache[id]=newData
 	return newData
 }
 
 function getNextTarget(scoreToTickets, targets, ballsRemaining, currentScore) {
-	let data = getTargetData(
+	let data=getTargetData(
 		scoreToTickets,
 		targets,
 		{},
@@ -88,34 +86,34 @@ function getNextTarget(scoreToTickets, targets, ballsRemaining, currentScore) {
 
 function addSample(targets, target, score, sampleCount) {
 	if (targets[target])
-		targets[target][score] = (targets[target][score] || 0) + (sampleCount || 1)
+		targets[target][score]=(targets[target][score] || 0)+(sampleCount || 1)
 }
 
-let targets = {
-	["100"]: {
+let targets={
+	['100']:{
 		// target
-		[100]: 4, // score: sample count
-		[10]: 68,
+		[100]:4, // score:sample count
+		[10]:68,
 	},
-	["50"]: {
-		[100]: 1,
-		[50]: 16,
-		[40]: 2,
-		[20]: 3,
-		[10]: 50,
+	['50']:{
+		[100]:1,
+		[50]:16,
+		[40]:2,
+		[20]:3,
+		[10]:50,
 	},
-	["40"]: {
-		[50]: 6,
-		[40]: 12,
-		[30]: 5,
-		[20]: 17,
-		[10]: 32,
+	['40']:{
+		[50]:6,
+		[40]:12,
+		[30]:5,
+		[20]:17,
+		[10]:32,
 	},
-	["30"]: {
-		[40]: 5,
-		[30]: 16,
-		[20]: 45,
-		[10]: 6,
+	['30']:{
+		[40]:5,
+		[30]:16,
+		[20]:45,
+		[10]:6,
 	},
 }
 
@@ -135,90 +133,90 @@ function scoreToTickets(score) {
 	}
 }
 
-let scores = [0, 10, 20, 30, 40, 50, 100]
+let scores=[0, 10, 20, 30, 40, 50, 100]
 
-let historyIndex = 0
-let history = []
+let historyIndex=0
+let history=[]
 
-history[historyIndex] = {
-	ballsRemaining: 9,
-	score: 0,
-	target: getNextTarget(scoreToTickets, targets, 9, 0),
+history[historyIndex]={
+	ballsRemaining:9,
+	score:0,
+	target:getNextTarget(scoreToTickets, targets, 9, 0),
 }
 
 for (let index in scores) {
-	let score = scores[index]
+	let score=scores[index]
 
-	let button = document.createElement("Button")
-	button.innerHTML = score
-	document.getElementById("middle").appendChild(button)
+	let button=document.createElement('Button')
+	button.innerHTML=score
+	document.getElementById('middle').appendChild(button)
 
 	if (index % 3 === 0) {
-		document.getElementById("middle").appendChild(document.createElement("br"))
+		document.getElementById('middle').appendChild(document.createElement('br'))
 	}
 
-	button.onclick = function () {
-		let lastState = history[historyIndex]
-		let state = {}
+	button.onclick=function () {
+		let lastState=history[historyIndex]
+		let state={}
 
-		state.ballsRemaining = lastState.ballsRemaining - 1
-		state.score = lastState.score + score
+		state.ballsRemaining=lastState.ballsRemaining - 1
+		state.score=lastState.score+score
 
 		if (state.ballsRemaining === 0) {
-			state.ballsRemaining = 9
-			state.score = 0
+			state.ballsRemaining=9
+			state.score=0
 		}
 
 		addSample(targets, lastState.target, score)
 
-		state.target = getNextTarget(
+		state.target=getNextTarget(
 			scoreToTickets,
 			targets,
 			state.ballsRemaining,
 			state.score
 		)
 
-		history[++historyIndex] = state
+		history[++historyIndex]=state
 	}
 }
 
-let button = document.createElement("Button")
-button.innerHTML = "Undo"
-document.getElementById("middle").appendChild(button)
+let button=document.createElement('Button')
+button.innerHTML='Undo'
+document.getElementById('middle').appendChild(button)
 
-button.onclick = function () {
+button.onclick=function () {
 	if (historyIndex === 0) {
 		return
 	}
-	let lastState = history[historyIndex - 1]
-	let state = history[historyIndex]
+	let lastState=history[historyIndex - 1]
+	let state=history[historyIndex]
 	--historyIndex
 
-	let score = state.score - lastState.score
+	let score=state.score - lastState.score
 	addSample(targets, lastState.target, score, -1)
 }
 
 function render() {
-	let state = history[historyIndex]
+	let state=history[historyIndex]
 
-	context.clearRect(0, 0, vsx - 1, vsy - 1)
-	context.font = "50px Prata"
+	context.clearRect(0, 0, vsx, vsy)
+	context.font='50px Prata'
 	context.fillText(
-		"Target: " + state.target,
-		vsx / 2,
-		(2 / 3) * vsy - 20 * Math.sin(tick())
+		'Target:'+state.target,
+		vsx/2,
+		(2/3)*vsy - 20*Math.sin(tick())
 	)
 
-	context.font = "20px Prata"
+	context.font='20px Prata'
 	context.fillText(
-		"Balls: " + state.ballsRemaining,
-		vsx / 3,
-		vsy / 3 + 20 * Math.cos(tick())
+		'Balls:'+state.ballsRemaining,
+		vsx/3,
+		vsy/3+20*Math.cos(tick())
 	)
 	context.fillText(
-		"Score: " + state.score,
-		(2 / 3) * vsx,
-		(1 / 3) * vsy + 20 * Math.cos(tick())
+		'Score:'+state.score,
+		(2/3)*vsx,
+		(1/3)*vsy+20*Math.cos(tick())
 	)
 }
 

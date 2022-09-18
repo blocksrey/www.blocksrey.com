@@ -1,7 +1,7 @@
 html {
 	width: WW;
 	height: WH;
-	background: url("images/pattern.jpg");
+	background: url('images/pattern.jpg');
 }
 
 body {
@@ -58,11 +58,11 @@ A {
 	outline-color: black;
 }
 
-.FAV {
-	width: 32PX;
-	height: 32PX;
+.fav {
+	width: 32px;
+	height: 32px;
 }
 
-.ASS {
+.covid {
 	color: RED;
 }

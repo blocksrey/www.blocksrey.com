@@ -1,17 +1,17 @@
 body {
-	margin: 0;
-	font-family: as;
-	background-color: black;
-	color: white;
+	margin:0;
+	font-family:as;
+	background-color:black;
+	color:white;
 }
 
 .header {
-	padding: 13px;
-	margin: 0;
-	background-color: #171717;
+	padding:13px;
+	margin:0;
+	background-color:#171717;
 }
 
 @font-face {
-	font-family: as;
-	src: url("HelveticaNeueLTPro-BdCn.otf");
+	font-family:as;
+	src:url('HelveticaNeueLTPro-BdCn.otf');
 }

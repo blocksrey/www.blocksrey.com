@@ -1,7 +1,7 @@
-local DEFAULT_PAGE_FOLDER = "nullgame"
-local DEFAULT_PAGE_FILE = "index.html"
+local DEFAULT_PAGE_FOLDER = 'blocksrey'
+local DEFAULT_PAGE_FILE = 'index.html'
 
-local https = require("https")
+local https = require('https')
 
 local function openClose(path, mode, func, ...)
 	local file = io.open(path, mode)
@@ -13,42 +13,42 @@ local function openClose(path, mode, func, ...)
 end
 
 local function readClose(path)
-	return openClose(path, "r", "read", "a")
+	return openClose(path, 'r', 'read', 'a')
 end
 
 local function URLS_URLO(URLS)
 	local URLO = {}
-	for string in URLS:gmatch("([^/]+)") do
+	for string in URLS:gmatch('([^/]+)') do
 		table.insert(URLO, string)
 	end
 	return URLO
 end
 
 local function URLO_URLS(URLO)
-	return table.concat(URLO, "/")
+	return table.concat(URLO, '/')
 end
 
 local function URLS_URLSE(URLS)
-	return URLS:match("[^.]+$")
+	return URLS:match('[^.]+$')
 end
 
 local URLSE_MIME_ = {}
-URLSE_MIME_.html = "text/html"
-URLSE_MIME_.css = "text/css"
-URLSE_MIME_.js = "text/javascript"
-URLSE_MIME_.ico = "image/x-icon"
-URLSE_MIME_.png = "image/png"
-URLSE_MIME_.jpg = "image/jpeg"
-URLSE_MIME_.gif = "image/gif"
-URLSE_MIME_.glsl = "text/plain"
-URLSE_MIME_.swf = "application/x-shockwave-flash"
-URLSE_MIME_.wasm = "application/wasm"
+URLSE_MIME_.html = 'text/html'
+URLSE_MIME_.css = 'text/css'
+URLSE_MIME_.js = 'text/javascript'
+URLSE_MIME_.ico = 'image/x-icon'
+URLSE_MIME_.png = 'image/png'
+URLSE_MIME_.jpg = 'image/jpeg'
+URLSE_MIME_.gif = 'image/gif'
+URLSE_MIME_.glsl = 'text/plain'
+URLSE_MIME_.swf = 'application/x-shockwave-flash'
+URLSE_MIME_.wasm = 'application/wasm'
 
 local function URLS_MIME(URLS)
 	local URLSE = URLS_URLSE(URLS)
 	return
 		URLSE_MIME_[URLSE] or
-		print("No type for: "..URLS)
+		print('No type for:'..URLS)
 end
 
 local cache = {}
@@ -63,7 +63,7 @@ end
 
 local directories = {}
 
-for directory in io.popen("ls -d */"):lines() do
+for directory in io.popen('ls -d */'):lines() do
 	directories[directory:sub(1, -2)] = true
 end
 
@@ -96,19 +96,19 @@ local function readURLO(URLO)
 end
 
 local options = {
-	ca = readClose("ssl/intermediate.cert.pem");
-	cert = readClose("ssl/domain.cert.pem");
-	key = readClose("ssl/private.key.pem");
+	ca = readClose('ssl/intermediate.cert.pem');
+	cert = readClose('ssl/domain.cert.pem');
+	key = readClose('ssl/private.key.pem');
 }
 
 local function onRequest(request, response)
 	local data = readURLO(URLS_URLO(request.url))
 	if data then
-		response:setHeader("Content-Type", URLS_MIME(request.url))
+		response:setHeader('Content-Type', URLS_MIME(request.url))
 	end
 	response:finish(data)
 end
 
 https.createServer(options, onRequest):listen(443)
 
-print("Listening...")
+print('Listening...')

@@ -1,16 +1,17 @@
-var vertexshaderstring = `
-precision mediump float;
+let vertexshaderstring = `#version 300 es
 
-varying vec3 fragcolor;
+precision lowp float;
 
-attribute vec3 vertposition;
-attribute vec3 vertcolor;
+out vec3 fcol;
+
+in vec3 vpos;
+in vec3 vcol;
 
 uniform mat4 view;
 uniform mat4 proj;
 
 void main() {
-    fragcolor = vertcolor;
-    gl_Position = proj*view*vec4(vertposition, 1);
+    fcol = vcol;
+    gl_Position = proj*view*vec4(vpos, 1);
 }
 `;

@@ -1,6 +1,6 @@
-//Node.bs by Jeff Skinner
+// Node.bs by Jeff Skinner
 
-const https = require('https'); //More like, express
+const https = require('https'); // More like, express
 const fs = require('fs');
 
 const PORT = 443;
@@ -24,16 +24,16 @@ const types = {
 };
 
 function getRequestOrigin(request) {
-	return request.headers['x-forwarded-for'] || request.connection.remoteAddress; //Still don't get this
+	return request.headers['x-forwarded-for'] || request.connection.remoteAddress; // Still don't get this
 }
 
 function getRequestDestinationMIME(url) {
 	return (
-		types[url.substr(url.lastIndexOf('.') + 1)] || 'text/plain' //Don't like anything after ||
+		types[url.substr(url.lastIndexOf('.') + 1)] || 'text/plain' // Don't like anything after ||
 	);
 }
 
-//readFileAsync?
+// readFileAsync?
 function getRequestFileData(URL) {
 	fs.readFile('.' + URL, (error, data) => {
 		if (error) return null;
@@ -47,7 +47,7 @@ function parseURL(url) {
 
 https
 	.createServer(options, (request, response) => {
-		//var origin = getRequestOrigin(request);
+		// var origin = getRequestOrigin(request);
 		var url = parseURL(request.url)
 		var contents = fs.readFileSync(url);
 		if (contents) {
@@ -57,7 +57,7 @@ https
 			);
 			response.end(contents);
 		}
-		//console.log(origin);
+		// console.log(origin);
 		/*
 		fs.appendFile('dynamic/history', origin + '\n', (error) => {
 			if (error) console.log('Write error');
@@ -75,7 +75,7 @@ https
 					}
 				});
 			else {
-				//console.log(getRequestDestinationMIME(request));
+				// console.log(getRequestDestinationMIME(request));
 				response.setHeader('Content-Type', getRequestDestinationMIME(request));
 				response.end(data);
 			}

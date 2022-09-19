@@ -1,19 +1,15 @@
-html {
-	width: WW;
-	height: WH;
-	background: url('images/pattern.jpg');
-}
+* { margin: 0; }
 
 body {
-	background-color: gray;
+	background: url('images/pattern.jpg');
 	text-align: center;
-	margin: auto;
-	height: WH;
 	width: 960px;
+	overflow: hidden;
+	margin: auto;
 }
 
 canvas {
-	image-rendering: optimizeSpeed;
+	image-rendering: pixelated;
 }
 
 p {
@@ -21,14 +17,7 @@ p {
 }
 
 A {
-	color: #ffff00;
-}
-
-#title {
-	text-align: center;
-	justify-content: center;
-	margin: center;
-	filter: drop-shadow(0px 0px 8px orange);
+	color: yellow;
 }
 
 #right {
@@ -51,9 +40,8 @@ A {
 .section {
 	margin: 16px;
 	padding: 8px;
-	background-color: #282121;
-	color: white;
-	filter: drop-shadow(0px 0px 8px black);
+	background-color: slategrey;
+	color: black;
 	outline: groove;
 	outline-color: black;
 }
@@ -64,5 +52,5 @@ A {
 }
 
 .covid {
-	color: RED;
+	color: red;
 }

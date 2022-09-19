@@ -1,12 +1,12 @@
-let fragmentshaderstring = `#version 300 es
+let fragShaderString = `#version 300 es
 
-precision lowp float;
+precision mediump float;
 
 in vec3 fcol;
 
-out vec4 lolol;
+out vec4 colo;
 
 void main() {
-    lolol = vec4(fcol, 1);
+    colo = vec4(fcol, 1.0f);
 }
-`;
+`

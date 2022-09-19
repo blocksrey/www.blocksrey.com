@@ -1,5 +1,5 @@
 local DEFAULT_PAGE_FOLDER = 'blocksrey'
-local DEFAULT_PAGE_FILE = 'index.html'
+local DEFAULT_PAGE_FILE = 'index.htm'
 
 local https = require('https')
 

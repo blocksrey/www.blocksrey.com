@@ -1,0 +1,71 @@
+<!doctype html>
+
+<title>blocksrey</title>
+<meta charset=utf8>
+<link href=images/favicon.ico rel=icon>
+<link href=style.css rel=stylesheet>
+
+<a href=.><img id=title src=images/blocksrey.gif></a>
+<div class=section id=header>
+	<p>
+		Welcome to my portfolio. You look like you're stuck in the 90s, can I help you with that? Anyways, feel free to look around.
+	</p>
+	<p>
+		ヌルゲームへようこそ。こちらのサイトの将来は未定ですが、WebGLは開発されつつあります。
+	</p>
+</div>
+<div id=main>
+	<div class=section id=right>
+		<p>Navigation</p>
+		<a href=Resume/>Resume</a><br>
+		<br>
+		<a href=履歴書/>履歴書</a><br>
+		<br>
+		<a href=どっか/>どっか</a><br>
+		<br>
+		<a href=2204355/>2204355</a><br>
+		<br>
+		<a href=Radix/>Radix</a><br>
+		<br>
+		<a href=VillagerCalc/>VillagerCalc</a><br>
+		<br>
+		<a href=Skee-Ball/>Skee-Ball</a><br>
+		<br>
+		<a href=Discord/>Discord</a><br>
+		<br>
+		<p>Media</p>
+		<a href=http://github.com/blocksrey><img class=fav src=http://github.com/favicon.ico></a>
+		<a href=http://twitter.com/blocksrey><img class=fav src=http://twitter.com/favicon.ico></a>
+		<a href=http://blocksrey.itch.io/><img class=fav src=http://itch.io/favicon.ico></a>
+		<a href=http://blocksrey.booth.pm/><img class=fav src=http://booth.pm/favicon.ico></a>
+	</div>
+	<div class=section id=center>
+		<canvas width=400 height=300></canvas>
+		<p>
+			This is some WebGL stuff, and I don't really know what else to write
+			about here.
+		</p>
+		<a class=covid>COVID-19 Statistics:</a><br>
+		<a class=covid id=total>Fetching...</a><br>
+		<a class=covid id=deaths></a>
+	</div>
+</div>
+<div class=section id=footer>
+	<p>
+		Hi, my name's Jeff. Developing video games and all things 3D related is my passion. The majority of my web dev has been exclusively on this website, so yeah... I like obscure and old memorabilia from the early web, which is why the site is themed like this. It's a masterpiece, isn't it? Anyways, enjoy various 2010-era Internet anomolies, feel free to give recommendations at <a href=mailto:jeff@je.gy>jeff@je.gy</a>
+	</p>
+</div>
+<script src=shaders/vert.glsl></script>
+<script src=shaders/frag.glsl></script>
+<script src=scripts/sankaku.js></script>
+<script>
+	let request = new XMLHttpRequest()
+	request.open('get', 'https://covid19.mathdro.id/api')
+	request.send()
+	request.onload = () => {
+		let obj = JSON.parse(request.response)
+		document.getElementById('total').innerHTML = 'total cases:' + obj.confirmed.value
+		//document.getElementById('recovered').innerHTML = 'Recoveries:' + obj.recovered.value
+		document.getElementById('deaths').innerHTML = 'deaths:' + obj.deaths.value
+	}
+</script>

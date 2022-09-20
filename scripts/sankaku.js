@@ -242,3 +242,22 @@ let renderLoop = () => {
 	gl.drawArrays(gl.TRIANGLES, 0, 3)
 }
 requestAnimationFrame(renderLoop)
+
+
+
+
+
+
+
+
+
+
+let request = new XMLHttpRequest()
+request.open('get', 'https://covid19.mathdro.id/api')
+request.send()
+request.onload = () => {
+	let obj = JSON.parse(request.response)
+	document.getElementById('total').innerHTML = 'total cases:' + obj.confirmed.value
+	//document.getElementById('recovered').innerHTML = 'Recoveries:' + obj.recovered.value
+	document.getElementById('deaths').innerHTML = 'deaths:' + obj.deaths.value
+}

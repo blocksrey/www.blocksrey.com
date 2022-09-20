@@ -7,13 +7,13 @@
 <a href=.><img id=title src=images/blocksrey.gif></a>
 
 <div class=section id=header>
-	<p>Welcome to my portfolio. You look like you're stuck in the 90s, can I help you with that? Anyways, feel free to look around.</p>
+	<p>Welcome to Jeff's home. As you can see, you're stuck in the 90s! But don't worry, there's a lot to explore around here. Don't get lost.</p>
 	<p>ヌルゲームへようこそ。こちらのサイトの将来は未定ですが、WebGLは開発されつつあります。</p>
 </div>
 
 <div id=main>
 	<div class=section id=right>
-		<p>Navigation</p>
+		<p>Directory</p>
 		<a href=Resume/>Resume</a>
 		<br>
 		<br>
@@ -39,14 +39,14 @@
 		<br>
 		<br>
 		<p>Media</p>
-		<a href=http://github.com/blocksrey><img class=fav src=http://github.com/favicon.ico></a>
-		<a href=http://twitter.com/blocksrey><img class=fav src=http://twitter.com/favicon.ico></a>
-		<a href=http://blocksrey.itch.io><img class=fav src=http://itch.io/favicon.ico></a>
-		<a href=http://blocksrey.booth.pm><img class=fav src=http://booth.pm/favicon.ico></a>
+		<a href=http://github.com/blocksrey><img src=http://github.com/favicon.ico></a>
+		<a href=http://twitter.com/blocksrey><img src=https://abs.twimg.com/favicons/twitter.ico></a>
+		<a href=http://blocksrey.itch.io><img src=http://itch.io/favicon.ico></a>
+		<a href=http://blocksrey.booth.pm><img src=http://booth.pm/favicon.ico></a>
 	</div>
 	<div class=section id=center>
 		<canvas width=400 height=300></canvas>
-		<p>This is some WebGL stuff... I don't really know what else to write about here.</p>
+		<p>WebGL graphics in the browser!? Isn't that supposed to come out in 2011? I guess we time traveled or something...</p>
 		<a class=covid>COVID-19 Statistics:</a>
 		<br>
 		<a class=covid id=total>Fetching...</a>
@@ -54,24 +54,38 @@
 		<a class=covid id=deaths></a>
 	</div>
 </div>
+
 <div class=section id=footer>
-	<p>Hi, my name's Jeff. Developing video games and all things 3D related is my passion. The majority of my web dev has been exclusively on this website, so yeah... I like obscure and old memorabilia from the early web, which is why the site is themed like this. It's a masterpiece, isn't it? Anyways, enjoy various 2010-era Internet anomolies, feel free to give recommendations at <a href=mailto:jeff@je.gy>jeff@je.gy</a></p>
+	<p>Hi there! Developing games and things related to 3D is my passion. I'm also a fan of obscure and old memorabilia from the early web. This website's directive includes Internet anomolies from the 2010-era as well as random little projects I've worked on. Furthermore, you can reach out to me at the following e-mail: <a href=mailto:jeff@je.gy>jeff@je.gy</a></p>
 </div>
+
+<img src=images/88x31/piracy.gif>
+<img src=images/88x31/opengl.gif>
+<img src='images/88x31/pb.gif'>
+<img src=images/88x31/donate.gif>
+<img src=images/88x31/ostan.gif>
+<img src=images/88x31/88-31-banner.gif>
+<img src=images/88x31/exploiter.gif>
+<img src=images/88x31/quake.gif>
+
+<img src=images/88x31/nvidia.gif>
+<img src=images/88x31/bluepantsu.gif>
+<img src=images/88x31/cg_japan.gif>
+<img src=images/88x31/jpani4.gif>
+<img src=images/88x31/kawaiibutton.gif>
+<img src=images/88x31/dignosedgay.gif>
+<img src=images/88x31/gnu-linux.gif>
+<img src=images/88x31/rorikon.gif>
+
+<img src=images/88x31/cd.gif>
+<img src=images/88x31/sdl.gif>
+<img src=images/88x31/jpani2.gif>
+<img src=images/88x31/jpani6.gif>
+<img src=images/88x31/weednow.gif>
+<img src=images/88x31/ratpilled.gif>
+<img src=images/88x31/best1024.gif>
+<img src=images/88x31/_01.gif>
 
 <script src=shaders/vert.glsl></script>
 <script src=shaders/frag.glsl></script>
 <script src=scripts/sankaku.js></script>
-
-<script>
-
-let request = new XMLHttpRequest()
-request.open('get', 'https://covid19.mathdro.id/api')
-request.send()
-request.onload = () => {
-	let obj = JSON.parse(request.response)
-	document.getElementById('total').innerHTML = 'total cases:' + obj.confirmed.value
-	//document.getElementById('recovered').innerHTML = 'Recoveries:' + obj.recovered.value
-	document.getElementById('deaths').innerHTML = 'deaths:' + obj.deaths.value
-}
-
-</script>

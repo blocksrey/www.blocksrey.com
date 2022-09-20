@@ -1,24 +1,24 @@
 html {
-    background-color:#002040;
+    background-color: #002040;
 }
 
 body {
-    background-color:#001020;
-    margin:auto;
-    width:640;
+    background-color: #001020;
+    margin: auto;
+    width: 640;
 }
 
 p {
-    color:#ffffff;
+    color: #ffffff;
 }
 
 input {
-    background-color:black;
-    color:#ffffff;
+    background-color: black;
+    color: #ffffff;
 }
 
 canvas {
-    background-color:#ffffff;
-    image-rendering:pixelated;
-    width:inherit;
+    background-color: #ffffff;
+    image-rendering: pixelated;
+    width: inherit;
 }

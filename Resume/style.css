@@ -1,0 +1,76 @@
+* {
+	FONT-SIZE:4MM;
+}
+
+HTML {
+	MARGIN:0MM;
+	PADDING:0MM;
+
+	BACKGROUND-COLOR:BLACK;
+	DISPLAY:FLEX;
+	JUSTIFY-CONTENT:CENTER;
+	BACKGROUND-IMAGE:URL(wood.jpg);
+	BACKGROUND-REPEAT:REPEAT;
+}
+
+BODY {
+	MARGIN:0MM;
+	PADDING:0MM;
+
+	BACKGROUND-COLOR:WHITE;
+	WIDTH:210MM;
+	HEIGHT:297MM;
+}
+
+IMG {
+	MARGIN:0MM;
+	PADDING:0MM;
+
+	WIDTH:3CM;
+	HEIGHT:4CM;
+
+	float:RIGHT;
+}
+
+.hanko {
+	WIDTH:12.5MM;
+	HEIGHT:12.5MM;
+}
+
+HEADER {
+	MARGIN-TOP:0MM;
+	PADDING:0MM;
+
+	FONT-WEIGHT:BOLD;
+	FONT-SIZE:4MM;
+}
+
+DIV {
+	MARGIN:0MM;
+	PADDING:8MM;
+	PADDING-BOTTOM:2MM;
+}
+
+.exp {
+	MARGIN:0MM;
+	PADDING:0MM;
+
+	margin-left:6MM;
+	margin-bottom:4MM;
+}
+
+.experience {
+	display:inline-block;
+}
+
+.skills {
+	text-align:right;
+	float:right;
+}
+
+A {
+	MARGIN:0MM;
+	PADDING:0MM;
+
+	TEXT-DECORATION:NONE;
+}

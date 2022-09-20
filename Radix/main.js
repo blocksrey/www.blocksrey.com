@@ -1,70 +1,67 @@
-var print=console.log;
-var log=Math.log;
-var floor=Math.floor;
-var rand=Math.random;
+let print = console.log
+let log = Math.log
+let floor = Math.floor
+let rand = Math.random
 
-//Mathematica Notation:
-//Solve[b^n == x, n]
+// Mathematica Notation:
+// Solve[b^n == x, n]
 function logb(b, x) {
-    return log(x) / log(b); //Turns out I didn't need this...
+	return log(x)/log(b) // Turns out I didn't need this...
 }
 
-//Neat little formula
-function objectlength(number, base) {
-    return 1 + floor(logb(base, number));
-}
+// Neat little formula
+function objectLength(number, base) { return 1 + floor(logb(base, number)) }
 
 function objectdecimal(object, base) {
-    var final=0;
-    var length=object.length;
-    for (var index=0; index < length; ++index)
-        final += base ** index * object[length - index - 1];
-    return final;
+	let final = 0
+	let l = object.length
+	for (let i = 0; i < l; ++i)
+		final += base**i*object[l - i - 1]
+	return final
 }
 
 function decimalobject(number, base) {
-    var final=[];
-    var length=objectlength(number, base);
-    for (var index=0; index < length; ++index) {
-        var coefficient=base ** (length - index - 1);
-        var maximum=floor(number / coefficient);
-        number -= coefficient * maximum;
-        final[index]=maximum;
-    }
-    return final;
+	let final = []
+	let l = objectLength(number, base)
+	for (let i = 0; i < l; ++i) {
+		let coefficient = base**(l - i - 1)
+		let maximum = floor(number/coefficient)
+		number -= coefficient*maximum
+		final[i] = maximum
+	}
+	return final
 }
 
 function convertbase(object, base0, base1) {
-    return decimalobject(objectdecimal(object, base0), base1);
+	return decimalobject(objectdecimal(object, base0), base1)
 }
 
-var canvas=document.querySelector('canvas');
-var context=canvas.getContext('2d');
+let canvas = document.querySelector('canvas')
+let context = canvas.getContext('2d')
 
 function render() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
+	context.clearRect(0, 0, canvas.width, canvas.height)
 
-    var decimal=document.getElementById('decimal').value || 0;
-    var base=document.getElementById('base').value || 0;
+	let decimal = document.getElementById('decimal').value || 0
+	let base = document.getElementById('base').value || 0
 
-    var thisisthevariablethatrepresentswhatstringwillberenderedontothescreen=null;
-    if (decimal > 0 && base > 1) {
-        thisisthevariablethatrepresentswhatstringwillberenderedontothescreen=decimalobject(
-            decimal,
-            base
-        );
-        SANELEVEL=1;
-    } else {
-        thisisthevariablethatrepresentswhatstringwillberenderedontothescreen =
-            'OOPS';
-        SANELEVEL=0;
-    }
-    var SANEINVERSE=1 - SANELEVEL;
-    context.strokeText(
-        thisisthevariablethatrepresentswhatstringwillberenderedontothescreen,
-        4 * SANEINVERSE * rand() + canvas.width / 2,
-        4 * SANEINVERSE * rand() + canvas.height / 2
-    );
-    requestAnimationFrame(render);
+	let thisistheletiablethatrepresentswhatstringwillberenderedontothescreen = null
+	if (decimal > 0 && base > 1) {
+		thisistheletiablethatrepresentswhatstringwillberenderedontothescreen = decimalobject(
+			decimal,
+			base
+		)
+		SANELEVEL = 1
+	} else {
+		thisistheletiablethatrepresentswhatstringwillberenderedontothescreen = 'OOPS'
+		SANELEVEL = 0
+	}
+	let SANEINVERSE = 1 - SANELEVEL
+	context.strokeText(
+		thisistheletiablethatrepresentswhatstringwillberenderedontothescreen,
+		4*SANEINVERSE*rand() + canvas.width/2,
+		4*SANEINVERSE*rand() + canvas.height/2
+	)
+	requestAnimationFrame(render)
 }
-render();
+render()

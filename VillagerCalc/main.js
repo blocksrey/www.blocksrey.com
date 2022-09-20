@@ -15,7 +15,7 @@ let max
 let min
 
 function isint(num){
-	return num-floor(num)==0
+	return num-floor(num)===0
 }
 
 function approxparse(num){
@@ -30,7 +30,7 @@ function renderstats(){
 		minobj.innerHTML='Minimum:'+min
 	}else{
 		itersobj.innerHTML=
-			nameobj.value==''
+			nameobj.value===''
 				?'Pleasetypeaname.'
 				:name0
 				?'Thisvillagerdoesnotexist.'

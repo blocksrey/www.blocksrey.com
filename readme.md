@@ -8,7 +8,7 @@ je.gy is a shitty website made by a non-web developer. The website is powered by
 - Anything transparent was a gif
 - Anything not transparent was a jpg
 - GIFs were like 1 fps
-- htm -> html (maybe more of a 90s thing tho)
+- htm -> html (maybe more of a '90s thing tho)
 
 ## Features
 

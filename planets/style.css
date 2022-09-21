@@ -1,25 +1,25 @@
 body {
-	background-color:#101020;
-	margin:0;
+	background-color: #101020;
+	margin: 0;
 }
 
 /*rule*/
 @font-face {
-	font-family:'Digitizer';
-	src:url('Digitizer.otf');
+	font-family: 'Digitizer';
+	src: url('Digitizer.otf');
 }
 
 /*id*/
 #header {
-	font-family:Digitizer;
-	font-size:32px;
-	margin:0;
-	padding:20px;
-	background-color:#C0F000;
-	border-style:solid;
-	border-width:0;
-	border-bottom-width:12px;
-	border-color:#FFFFFF;
+	font-family: Digitizer;
+	font-size: 32px;
+	margin: 0;
+	padding: 20px;
+	background-color: #C0F000;
+	border-style: solid;
+	border-width: 0;
+	border-bottom-width: 12px;
+	border-color: #FFFFFF;
 }
 
 /*class*/

@@ -419,14 +419,13 @@ let characterStep = (character, dt) => {
 	return 0
 }
 
-
-
+/*
 enqueue(0, character)
 runFor(0.5)
 runFor(0.5)
 runFor(0.5)
 runFor(0.5)
-
+*/
 
 
 
@@ -461,4 +460,3 @@ request.onload = () => {
 	document.getElementById('deaths').innerHTML = 'deaths: ' + obj.deaths.value
 }
 
-print('asd')

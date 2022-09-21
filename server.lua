@@ -1,5 +1,5 @@
 local DEFAULT_PAGE_FOLDER = 'blocksrey'
-local DEFAULT_PAGE_FILE = 'index.htm'
+local DEFAULT_PAGE_FILE = 'page.htm'
 
 local https = require('https')
 
@@ -33,7 +33,7 @@ local function URLS_URLSE(URLS)
 end
 
 local URLSE_MIME_ = {}
-URLSE_MIME_.html = 'text/html'
+URLSE_MIME_.htm = 'text/html'
 URLSE_MIME_.css = 'text/css'
 URLSE_MIME_.js = 'text/javascript'
 URLSE_MIME_.ico = 'image/x-icon'

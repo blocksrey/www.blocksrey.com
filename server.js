@@ -42,7 +42,7 @@ function getRequestFileData(URL) {
 }
 
 function parseURL(url) {
-	return 'blocksrey' + url + (url === '/' && 'index.html' || '')
+	return 'blocksrey' + url + (url === '/' && 'page.htm' || '')
 }
 
 https

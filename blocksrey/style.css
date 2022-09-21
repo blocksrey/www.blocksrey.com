@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'custom';
-	src: url('font/w95fa.woff2');
+	src: url('w95fa.woff2');
 }
 
 * {
@@ -14,7 +14,7 @@ p { text-align: left; }
 canvas { image-rendering: pixelated; }
 
 body {
-	background: url('image/background/r6.gif');
+	background: url('background/r6.gif');
 	text-align: center;
 	width: 720px;
 }

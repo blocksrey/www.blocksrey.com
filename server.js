@@ -1,17 +1,17 @@
 // Node.bs by Jeff Skinner
 
-const https = require('https') // More like, express
-const fs = require('fs')
+let https = require('https') // More like, express
+let fs = require('fs')
 
-const PORT = 443
+let PORT = 443
 
-const options = {
+let options = {
 	key: fs.readFileSync('ssl/private.key.pem'),
 	cert: fs.readFileSync('ssl/domain.cert.pem'),
 	ca: fs.readFileSync('ssl/intermediate.cert.pem'),
 }
 
-const types = {
+let types = {
 	html: 'text/html',
 	ico: 'image/x-icon',
 	jpg: 'image/jpeg',
@@ -41,9 +41,13 @@ function getRequestFileData(URL) {
 	})
 }
 
+function parseURL(url) {
+	return 'blocksrey' + url + (url === '/' && 'index.html' || '')
+}
+
 https
 	.createServer(options, (request, response) => {
-		var origin = getRequestOrigin(request)
+		let origin = getRequestOrigin(request)
 		// console.log(origin)
 		fs.appendFile('dynamic/history', origin + '\n', (error) => {
 			if (error) console.log('Write error')

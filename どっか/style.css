@@ -1,6 +1,3 @@
-body{
-	margin:0;
-	height:100vh;
-	cursor:url('windows-98/Cursor79.cur'),default;
-	background-image:url('niku.gif');
-}
+* { margin: 0; }
+
+body { background-image: url('niku.gif'); }

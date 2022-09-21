@@ -1,62 +1,22 @@
-<!doctype html>
-
-<title>Testing</title>
-
-<script src=shader/vert.glsl></script>
-<script src=shader/frag.glsl></script>
-
-<script>
-
 // blocksrey
-// IDK if this is good or not
+
 'use strict'
 
+// I should make a generator for these functions tbh
+/*
+let comps = ['w', 'x', 'y', 'z']
 
+let parse = ''
 
-let cos = Math.cos
-let sin = Math.sin
-let sqrt = Math.sqrt
+for (let i in comps) {
+	let c = comps[i]
 
-let tick = Date.now
+	console.log(1 + i, comps)
+}
 
-let print = console.log
-
-let pi = Math.PI
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+`let  vec${a} = (${b}) => { return {${c}} }`
+`let dump${a} = (${b}) => { return [${c}] }`
+*/
 
 let vec2 = (x, y) => { return {x: x, y: y} }
 let vec3 = (x, y, z) => { return {x: x, y: y, z: z} }
@@ -146,23 +106,6 @@ let slerp = (a, b) => {
 
 
 
-//let onMouseMove = (event) => {
-//}
-
-
-
-// These will be useful soon
-onmousemove = (event) => {}
-onkeydown = (event) => {}
-onkeyup = (event) => {}
-
-
-
-
-
-
-
-
 
 
 let camp = vec3(0, 0, -10)
@@ -173,6 +116,7 @@ let camo = vec4(0, 0, 0, 1)
 let rati = 1
 //let proj = vec3(0, 0, 0)
 
+/*
 // Window resize handler
 onresize = () => {
 	canvas.width = innerWidth
@@ -195,19 +139,6 @@ onload = () => {
 
 	onresize()
 }
-
-let canvas = document.createElement('canvas')
-let gl = canvas.getContext('webgl2')
-
-
-
-
-/*
-let renderLoop = () => {
-	requestAnimationFrame(renderLoop)
-	gl.clear(gl.COLOR_BUFFER_BIT)
-}
-requestAnimationFrame(renderLoop)
 */
 
 
@@ -220,6 +151,33 @@ requestAnimationFrame(renderLoop)
 
 
 
+
+
+
+
+
+
+// These will be useful soon
+onmousemove = (event) => {}
+onkeydown = (event) => {}
+onkeyup = (event) => {}
+
+
+
+
+
+
+
+
+let cos = Math.cos
+let sin = Math.sin
+let sqrt = Math.sqrt
+
+let tick = Date.now
+
+let print = console.log
+
+let pi = Math.PI
 
 
 
@@ -252,12 +210,18 @@ let vertices = [
 	0,
 ]
 
-
-
-
+let canvas = document.querySelector('canvas')
+let gl = canvas.getContext('webgl2')
 
 let vertShader = gl.createShader(gl.VERTEX_SHADER)
 let fragShader = gl.createShader(gl.FRAGMENT_SHADER)
+
+
+
+
+
+
+
 
 gl.shaderSource(vertShader, vertShaderString)
 gl.shaderSource(fragShader, fragShaderString)
@@ -295,7 +259,18 @@ let ratiUniformLocation = gl.getUniformLocation(program, 'rati')
 
 
 
+
+
+
+
+
+
+
+
+
 let getProj = (tan, aspect) => { return vec3(aspect, 1, tan) }
+
+let proj = getProj(2/5*pi, canvas.height/canvas.width)
 
 
 
@@ -307,6 +282,8 @@ let t0 = 0.001*tick()
 let update = () => {
 	let t1 = 0.001*tick()
 	let dt = t1 - t0
+
+	//print(dt)
 
 	t0 = t1
 }
@@ -321,10 +298,22 @@ setInterval(update, 0)
 gl.clearColor(0, 0, 0, 1)
 
 
-let renderLoop = () => {
-	let t1 = 0.001*tick()
 
-	//camp.y = 2*sin(t1)
+
+/*
+let renderLoop = () => {
+	requestAnimationFrame(renderLoop)
+	gl.clear(gl.COLOR_BUFFER_BIT)
+}
+requestAnimationFrame(renderLoop)
+*/
+
+let renderLoop = () => {
+	requestAnimationFrame(renderLoop)
+
+	let t1 = Date.now()/1000
+
+	camp.y = 2*sin(t1)
 	//console.log(camp.y)
 
 	gl.uniform3f(campUniformLocation, ...lst3(camp))
@@ -337,10 +326,42 @@ let renderLoop = () => {
 	gl.clear(colorAndDepth)
 
 	gl.drawArrays(gl.TRIANGLES, 0, 3)
-
-	requestAnimationFrame(renderLoop)
 }
 requestAnimationFrame(renderLoop)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -406,4 +427,38 @@ runFor(0.5)
 runFor(0.5)
 runFor(0.5)
 
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let request = new XMLHttpRequest()
+request.open('get', 'https://covid19.mathdro.id/api')
+request.send()
+request.onload = () => {
+	let obj = JSON.parse(request.response)
+	document.getElementById('total').innerHTML = 'total cases: ' + obj.confirmed.value
+	//document.getElementById('recovered').innerHTML = 'Recoveries: ' + obj.recovered.value
+	document.getElementById('deaths').innerHTML = 'deaths: ' + obj.deaths.value
+}
+
+print('asd')

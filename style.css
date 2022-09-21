@@ -6,6 +6,7 @@
 * {
 	margin: auto;
 	font-family: 'custom';
+	/*cursor: url('windows-98/Cursor79.cur'), auto;*/
 }
 
 p { text-align: left; }
@@ -15,19 +16,19 @@ canvas { image-rendering: pixelated; }
 body {
 	background: url('image/background/r6.gif');
 	text-align: center;
-	width: 800px;
+	width: 720px;
 }
 
 #right {
 	text-align: left;
 	margin-top: auto;
-	width: 160px;
+	width: 140px;
 	height: 430px;
 	float: right;
 }
 
 #center {
-	width: 560px;
+	width: 500px;
 	height: 430px;
 }
 

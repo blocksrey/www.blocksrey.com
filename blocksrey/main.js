@@ -449,14 +449,13 @@ runFor(0.5)
 
 
 
-
+// COVID stuff
 let request = new XMLHttpRequest()
 request.open('get', 'https://covid19.mathdro.id/api')
 request.send()
 request.onload = () => {
 	let obj = JSON.parse(request.response)
-	document.getElementById('total').innerHTML = 'total cases: ' + obj.confirmed.value
-	//document.getElementById('recovered').innerHTML = 'Recoveries: ' + obj.recovered.value
-	document.getElementById('deaths').innerHTML = 'deaths: ' + obj.deaths.value
+	document.getElementById('cases').innerHTML = 'Cases: ' + obj.confirmed.value
+	document.getElementById('deaths').innerHTML = 'Deaths: ' + obj.deaths.value
 }
 

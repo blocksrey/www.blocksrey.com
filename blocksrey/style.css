@@ -4,14 +4,16 @@
 }
 
 * {
+	image-rendering: pixelated;
 	margin: auto;
+	font-size: 0;
 	font-family: 'custom';
+	text-align: left;
+	white-space: pre-wrap;
 	/*cursor: url('windows-98/Cursor79.cur'), auto;*/
 }
 
-p { text-align: left; }
-
-canvas { image-rendering: pixelated; }
+a { font-size: 16px; }
 
 body {
 	background: url('background/r6.gif');
@@ -19,24 +21,28 @@ body {
 	width: 720px;
 }
 
+div {
+	margin: 10px;
+	margin-top: 0;
+	padding: 10px;
+	background-color: lightgrey;
+	outline: groove;
+}
+
 #right {
-	text-align: left;
-	margin-top: auto;
-	width: 140px;
-	height: 430px;
+	width: 96px;
+	height: 460px;
 	float: right;
 }
 
 #center {
-	width: 500px;
-	height: 430px;
+	width: 554px;
+	height: 460px;
 }
 
-.section {
-	margin: 16px;
-	padding: 8px;
-	background-color: lightgrey;
-	outline: groove;
+#favicon {
+	width: 32px;
+	height: 32px;
 }
 
 .covid { color: red; }

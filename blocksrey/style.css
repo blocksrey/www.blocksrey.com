@@ -16,17 +16,17 @@
 a { font-size: 16px; }
 
 body {
-	background: url('background/r6.gif');
+	background: url('background/xtile.gif');
 	text-align: center;
 	width: 720px;
 }
 
 div {
-	margin: 10px;
+	margin: 5px;
 	margin-top: 0;
 	padding: 10px;
-	background-color: lightgrey;
-	outline: groove;
+	background-color: lightgoldenrodyellow;
+	outline: solid 1px;
 }
 
 #right {
@@ -36,7 +36,7 @@ div {
 }
 
 #center {
-	width: 554px;
+	width: 569px;
 	height: 460px;
 }
 

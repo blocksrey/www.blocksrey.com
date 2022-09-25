@@ -4,7 +4,7 @@
 }
 
 * {
-	image-rendering: pixelated;
+	image-rendering: optimizeSpeed;
 	margin: auto;
 	font-size: 0;
 	font-family: 'custom';
@@ -13,13 +13,17 @@
 	/*cursor: url('windows-98/Cursor79.cur'), auto;*/
 }
 
-a { font-size: 16px; }
+html {
+	background: url('background/xtile.gif');
+	background-position: center;
+}
 
 body {
-	background: url('background/xtile.gif');
 	text-align: center;
 	width: 720px;
 }
+
+a { font-size: 16px; }
 
 div {
 	margin: 5px;

@@ -42,15 +42,20 @@ a {
 	font-size: 15px;
 	line-height: 1.2;
 	font-weight: bold;
-	color: #d96d5f;
+	color: #f0a95d;
 }
+
+/* f0a95d */
+/* d96d5f */
+/* 593724 */
+/* c30400 */
 
 div {
 	background: url(zstngd_32.gif);
 	margin: 10px;
 	margin-top: 0;
 	padding: 10px;
-	outline: #000000 solid 2px;
+	outline: #593724 solid 2px;
 }
 
 #right {

@@ -292,7 +292,7 @@ setInterval(update, 0)
 
 
 
-gl.clearColor(0.1, 0, 0, 1)
+gl.clearColor(0, 0, 0, 1)
 
 
 

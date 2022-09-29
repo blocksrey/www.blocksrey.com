@@ -14,7 +14,7 @@ for (let i in comps) {
 	console.log(1 + i, comps)
 }
 
-`let  vec${a} = (${b}) => { return {${c}} }`
+`let vec${a} = (${b}) => { return {${c}} }`
 `let dump${a} = (${b}) => { return [${c}] }`
 */
 
@@ -131,11 +131,7 @@ onresize = () => {
 
 // Window load handler
 onload = () => {
-	document.body.style.margin = 0
-	document.body.style.overflow = 'hidden'
 	document.body.appendChild(canvas)
-
-	canvas.style['image-rendering'] = 'pixelated'
 
 	onresize()
 }
@@ -172,10 +168,10 @@ onkeyup = (event) => {}
 let cos = Math.cos
 let sin = Math.sin
 let sqrt = Math.sqrt
-
-let tick = Date.now
-
+let floor = Math.floor
+let gms = Date.now
 let print = console.log
+let rand = Math.random
 
 let pi = Math.PI
 
@@ -278,9 +274,10 @@ let proj = getProj(2/5*pi, canvas.height/canvas.width)
 
 
 
-let t0 = 0.001*tick()
+/*
+let t0 = 0.001*gms()
 let update = () => {
-	let t1 = 0.001*tick()
+	let t1 = 0.001*gms()
 	let dt = t1 - t0
 
 	//print(dt)
@@ -288,14 +285,14 @@ let update = () => {
 	t0 = t1
 }
 setInterval(update, 0)
+*/
 
 
 
 
 
 
-
-gl.clearColor(0, 0, 0, 1)
+gl.clearColor(0.1, 0, 0, 1)
 
 
 
@@ -309,9 +306,7 @@ requestAnimationFrame(renderLoop)
 */
 
 let renderLoop = () => {
-	requestAnimationFrame(renderLoop)
-
-	let t1 = Date.now()/1000
+	let t1 = 0.001*gms()
 
 	camp.y = 2*sin(t1)
 	//console.log(camp.y)
@@ -326,6 +321,8 @@ let renderLoop = () => {
 	gl.clear(colorAndDepth)
 
 	gl.drawArrays(gl.TRIANGLES, 0, 3)
+
+	requestAnimationFrame(renderLoop)
 }
 requestAnimationFrame(renderLoop)
 
@@ -459,3 +456,181 @@ request.onload = () => {
 	document.getElementById('deaths').innerHTML = 'Deaths: ' + obj.deaths.value
 }
 
+
+
+
+
+let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
+	i /= 2
+
+	let mx = i%1 < 0.5 ? 1 : -1
+	let my = 1
+
+	c2d.setTransform(mx, 0, 0, my, 0, 0)
+
+	c2d.drawImage(
+		image,
+		floor(i)%ty*sx,
+		floor(i/tx)%tx*sy,
+		sx,
+		sy,
+		mx*(px + 0.5*sx) - 0.5*sx,
+		my*(py + 0.5*sy) - 0.5*sy,
+		sx,
+		sy
+	)
+}
+
+
+
+
+let quakeGuy
+{
+	let quakeFaces = []
+	for (let i = 0; i < 10; ++i) {
+		quakeFaces[i] = new Image()
+		quakeFaces[i].src = 'quake/face/' + i + '.webp'
+	}
+
+	let quakePains = []
+	for (let i = 0; i < 6; ++i) { quakePains[i] = new Audio('quake/pain/' + i + '.ogg') }
+
+	quakeGuy = (canvas) => {
+		let px = 0
+		let py = 0
+
+		let sx = 0
+		let sy = 0
+
+		let tx = 0
+		let ty = 0
+
+		let health = 1
+		let hurting = 0
+
+		let c2d = canvas.getContext('2d')
+
+		let draw = () => {
+			c2d.clearRect(0, 0, canvas.width, canvas.height)
+
+			c2d.imageSmoothingEnabled = false
+
+			c2d.drawImage(
+				quakeFaces[2*floor(5*(1 - health)) + hurting],
+				0,
+				0,
+				24,
+				24,
+				px,
+				py,
+				sx,
+				sy
+			)
+
+			requestAnimationFrame(draw)
+		}
+		requestAnimationFrame(draw)
+
+		return {
+			hurt: (damage) => {
+				// Health
+				health -= damage
+				while (health < 0)
+					health += 1
+
+				// Hurt
+				hurting = 1
+				setTimeout(() => { hurting = 0 }, 300)
+
+				// Hurt sounds
+				quakePains[floor(rand()*quakePains.length)].play()
+			},
+
+			transform: (px_, py_, sx_, sy_) => {
+				px = px_
+				py = py_
+
+				sx = sx_
+				sy = sy_
+			},
+
+			direct: (tx_, ty_) => {
+				tx = tx_
+				ty = ty_
+			},
+
+			step: (dt) => {
+				let dx = tx - px
+				let dy = ty - py
+				let d = sqrt(dx*dx + dy*dy)
+
+				let vx = 128*dx/d
+				let vy = 128*dy/d
+
+				px += dt*vx
+				py += dt*vy
+			}
+		}
+	}
+}
+
+
+// I wanna make some confetti
+
+{
+	let canvas = document.createElement('canvas')
+	canvas.style.top = 0
+	canvas.style.left = 0
+	canvas.style['z-index'] = -1
+	canvas.style.position = 'absolute'
+
+	onresize = () => {
+		canvas.width = innerWidth
+		canvas.height = innerHeight
+	}
+
+	let quakeGuy0 = quakeGuy(canvas)
+
+	quakeGuy0.transform(1, 1, 60, 60)
+
+	onmousemove = (event) => { quakeGuy0.direct(event.clientX, event.clientY) }
+
+	onclick = (event) => { quakeGuy0.hurt(0.07) }
+
+	let t0 = gms()
+	let draw = () => {
+		let t1 = gms()
+		let dt = 0.001*(t1 - t0)
+		t0 = t1
+		requestAnimationFrame(draw)
+
+		quakeGuy0.step(dt)
+	}
+	requestAnimationFrame(draw)
+
+	// Window load handler
+	onload = () => {
+		document.body.appendChild(canvas)
+
+		onresize()
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+img('blocksrey.gif')
+
+let header = header()
+header.insert()

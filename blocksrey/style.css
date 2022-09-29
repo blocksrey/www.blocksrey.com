@@ -1,20 +1,27 @@
+/* blocksrey */
+
+/* If you're not using woff2, you're bad. */
 @font-face {
-	font-family: 'custom';
-	src: url('w95fa.woff2');
+	font-family: custom;
+	src: url(pgoth.woff2);
 }
 
+/* This section pretty much disables ambiguous formatting across browsers. */
 * {
-	image-rendering: optimizeSpeed;
+	image-rendering: pixelated;
+	text-rendering: optimizeSpeed;
 	margin: auto;
 	font-size: 0;
-	font-family: 'custom';
+	font-family: custom;
 	text-align: left;
 	white-space: pre-wrap;
-	/*cursor: url('windows-98/Cursor79.cur'), auto;*/
+	line-height: 0;
+	/*cursor: url(windows-98/Cursor79.cur), auto;*/
 }
 
+/* Centered backgrounds also support continuity. */
 html {
-	background: url('background/xtile.gif');
+	background: url(background/zwart.jpg);
 	background-position: center;
 }
 
@@ -23,14 +30,27 @@ body {
 	width: 720px;
 }
 
-a { font-size: 16px; }
+p {
+	font-size: 15px;
+	line-height: 1.2;
+	color: #f4d0bc;
+	display: inline;
+}
+
+/* I'd say this looks pretty good */
+a {
+	font-size: 15px;
+	line-height: 1.2;
+	font-weight: bold;
+	color: #d96d5f;
+}
 
 div {
-	margin: 5px;
+	background: url(zstngd_32.gif);
+	margin: 10px;
 	margin-top: 0;
 	padding: 10px;
-	background-color: lightgoldenrodyellow;
-	outline: solid 1px;
+	outline: #000000 solid 2px;
 }
 
 #right {
@@ -40,7 +60,7 @@ div {
 }
 
 #center {
-	width: 569px;
+	width: 554px;
 	height: 460px;
 }
 
@@ -49,4 +69,4 @@ div {
 	height: 32px;
 }
 
-.covid { color: red; }
+.covid { color: #c30400; }

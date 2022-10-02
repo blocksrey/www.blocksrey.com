@@ -3,14 +3,14 @@
 /* If you're not using woff2, you're bad. */
 @font-face {
 	font-family: custom;
-	src: url(pgoth.woff2);
+	src: url(gotp5.woff2);
 }
 
 /* This section pretty much disables ambiguous formatting across browsers. */
 * {
+	margin: 0;
 	image-rendering: pixelated;
 	text-rendering: optimizeSpeed;
-	margin: auto;
 	font-size: 0;
 	font-family: custom;
 	text-align: left;
@@ -19,11 +19,8 @@
 	/*cursor: url(windows-98/Cursor79.cur), auto;*/
 }
 
-/* Centered backgrounds also support continuity. */
-html {
-	background: url(background/zwart.jpg);
-	background-position: center;
-}
+/* Centered background actually isn't correct. */
+html { background: url(background/zwart.jpg); }
 
 body {
 	text-align: center;

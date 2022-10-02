@@ -104,10 +104,6 @@ let slerp = (a, b) => {
 
 
 
-
-
-
-
 let camp = vec3(0, 0, -10)
 let camo = vec4(0, 0, 0, 1)
 
@@ -136,11 +132,6 @@ onload = () => {
 	onresize()
 }
 */
-
-
-
-
-
 
 
 
@@ -256,23 +247,9 @@ let ratiUniformLocation = gl.getUniformLocation(program, 'rati')
 
 
 
-
-
-
-
-
-
-
-
 let getProj = (tan, aspect) => { return vec3(aspect, 1, tan) }
 
 let proj = getProj(2/5*pi, canvas.height/canvas.width)
-
-
-
-
-
-
 
 /*
 let t0 = 0.001*gms()
@@ -287,15 +264,7 @@ let update = () => {
 setInterval(update, 0)
 */
 
-
-
-
-
-
 gl.clearColor(0, 0, 0, 1)
-
-
-
 
 /*
 let renderLoop = () => {
@@ -325,44 +294,6 @@ let renderLoop = () => {
 	requestAnimationFrame(renderLoop)
 }
 requestAnimationFrame(renderLoop)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -424,28 +355,6 @@ runFor(0.5)
 runFor(0.5)
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // COVID stuff
 let request = new XMLHttpRequest()
 request.open('get', 'https://covid19.mathdro.id/api')
@@ -456,17 +365,13 @@ request.onload = () => {
 	document.getElementById('deaths').innerHTML = 'Deaths: ' + obj.deaths.value
 }
 
-
-
-
-
 let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
 	i /= 2
 
 	let mx = i%1 < 0.5 ? 1 : -1
 	let my = 1
 
-	c2d.setTransform(mx, 0, 0, my, 0, 0)
+	c2d.settransform(mx, 0, 0, my, 0, 0)
 
 	c2d.drawImage(
 		image,
@@ -481,31 +386,27 @@ let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
 	)
 }
 
-
-
-
-let quakeGuy
 {
 	let quakeFaces = []
-	for (let i = 0; i < 10; ++i) {
+	for (let i = 10; i--;) {
 		quakeFaces[i] = new Image()
 		quakeFaces[i].src = 'quake/face/' + i + '.webp'
 	}
 
 	let quakePains = []
-	for (let i = 0; i < 6; ++i) { quakePains[i] = new Audio('quake/pain/' + i + '.ogg') }
+	for (let i = 6; i--;) { quakePains[i] = new Audio('quake/pain/pain' + (i + 1) + '.wav') }
 
-	quakeGuy = (canvas) => {
-		let px = 0
-		let py = 0
-
+	var quakeGuy = (canvas) => {
 		let sx = 0
 		let sy = 0
 
 		let tx = 0
 		let ty = 0
 
-		let health = 1
+		let spx = spring_new(0, 0)
+		let spy = spring_new(0, 0)
+
+		let health_transpose = 0 // Equivalent to 1 - health
 		let hurting = 0
 
 		let c2d = canvas.getContext('2d')
@@ -516,13 +417,13 @@ let quakeGuy
 			c2d.imageSmoothingEnabled = false
 
 			c2d.drawImage(
-				quakeFaces[2*floor(5*(1 - health)) + hurting],
+				quakeFaces[2*floor(5*health_transpose) + hurting],
 				0,
 				0,
 				24,
 				24,
-				px,
-				py,
+				spx.p,
+				spy.p,
 				sx,
 				sy
 			)
@@ -534,22 +435,18 @@ let quakeGuy
 		return {
 			hurt: (damage) => {
 				// Health
-				health -= damage
-				while (health < 0)
-					health += 1
+				health_transpose += damage
+				health_transpose %= 1 // This is only appropriate when linear maybe
 
-				// Hurt
+				// Hurt offset
 				hurting = 1
 				setTimeout(() => { hurting = 0 }, 300)
 
-				// Hurt sounds
+				// Pain sounds
 				quakePains[floor(rand()*quakePains.length)].play()
 			},
 
-			transform: (px_, py_, sx_, sy_) => {
-				px = px_
-				py = py_
-
+			resize: (sx_, sy_) => {
 				sx = sx_
 				sy = sy_
 			},
@@ -560,19 +457,14 @@ let quakeGuy
 			},
 
 			step: (dt) => {
-				let dx = tx - px
-				let dy = ty - py
-				let d = sqrt(dx*dx + dy*dy)
-
-				let vx = 128*dx/d
-				let vy = 128*dy/d
-
-				px += dt*vx
-				py += dt*vy
+				spring_step(spx, tx, 16, 0.4, dt)
+				spring_step(spy, ty, 16, 0.4, dt)
 			}
 		}
 	}
 }
+
+
 
 
 // I wanna make some confetti
@@ -591,7 +483,7 @@ let quakeGuy
 
 	let quakeGuy0 = quakeGuy(canvas)
 
-	quakeGuy0.transform(1, 1, 60, 60)
+	quakeGuy0.resize(48, 48)
 
 	onmousemove = (event) => { quakeGuy0.direct(event.clientX, event.clientY) }
 
@@ -616,21 +508,6 @@ let quakeGuy
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-img('blocksrey.gif')
-
-let header = header()
-header.insert()
+//img('blocksrey.gif')
+//let header = header()
+//header.insert()

@@ -49,7 +49,7 @@ reset.onclick = resetstats
 resetstats()
 
 function performcalc() {
-	if (name0 != nameobj.value) resetstats()
+	if (name0 !== nameobj.value) resetstats()
 
 	name0 = nameobj.value
 	if (iters = randomselectiters(nameobj.value)) {

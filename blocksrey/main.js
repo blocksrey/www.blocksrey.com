@@ -160,6 +160,8 @@ let cos = Math.cos
 let sin = Math.sin
 let sqrt = Math.sqrt
 let floor = Math.floor
+let max = Math.max
+let min = Math.min
 let gms = Date.now
 let print = console.log
 let rand = Math.random
@@ -396,6 +398,14 @@ let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
 	let quakePains = []
 	for (let i = 6; i--;) { quakePains[i] = new Audio('quake/pain/pain' + (i + 1) + '.wav') }
 
+	let new_paths = ['anim_new.gif', 'new.gif', 'new.rainbow.gif', 'new01.gif', 'new2.gif', 'new02.gif', 'new03.gif', 'new04.gif', 'new_anim.gif', 'new_red.gif', 'new_small.gif', 'news2.gif']
+	let new_images = []
+
+	for (let i = new_paths.length; i--;) {
+		new_images[i] = new Image()
+		new_images[i].src = '../image/misc/new/' + new_paths[i]
+	}
+
 	var quakeGuy = (canvas) => {
 		let sx = 0
 		let sy = 0
@@ -422,29 +432,45 @@ let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
 				0,
 				24,
 				24,
+				spx.p + 0*64*cos(0.00081*gms()),
+				spy.p + 0*64*sin(0.00064*gms()),
+				sx,
+				sy
+			)
+
+			/*
+			c2d.drawImage(
+				new_images[floor(new_images.length*rand())],
+				0,
+				0,
+				64,
+				64,
 				spx.p,
 				spy.p,
 				sx,
 				sy
 			)
+			*/
 
 			requestAnimationFrame(draw)
 		}
 		requestAnimationFrame(draw)
 
+		let hurt = (damage) => {
+			// Health
+			health_transpose += damage
+			health_transpose %= 1 // This is only appropriate when linear maybe
+
+			// Hurt offset
+			hurting = 1
+			setTimeout(() => { hurting = 0 }, 300)
+
+			// Pain sounds
+			quakePains[floor(quakePains.length*rand())].play()
+		}
+
 		return {
-			hurt: (damage) => {
-				// Health
-				health_transpose += damage
-				health_transpose %= 1 // This is only appropriate when linear maybe
-
-				// Hurt offset
-				hurting = 1
-				setTimeout(() => { hurting = 0 }, 300)
-
-				// Pain sounds
-				quakePains[floor(rand()*quakePains.length)].play()
-			},
+			hurt: hurt,
 
 			resize: (sx_, sy_) => {
 				sx = sx_
@@ -457,8 +483,36 @@ let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
 			},
 
 			step: (dt) => {
-				spring_step(spx, tx, 16, 0.4, dt)
-				spring_step(spy, ty, 16, 0.4, dt)
+				if (spx.p > innerWidth - sx) {
+					spx.p = innerWidth - sx
+					spx.v = -spx.v
+					let potential_damage = -0.0001*spx.v
+					if (potential_damage > 0.05) { hurt(potential_damage) }
+				}
+
+				if (spx.p < 0) {
+					spx.p = 0
+					spx.v = -spx.v
+					let potential_damage = 0.0001*spx.v
+					if (potential_damage > 0.05) { hurt(potential_damage) }
+				}
+
+				if (spy.p > innerHeight - sy) {
+					spy.p = innerHeight - sy
+					spy.v = -spy.v
+					let potential_damage = -0.0001*spy.v
+					if (potential_damage > 0.05) { hurt(potential_damage) }
+				}
+
+				if (spy.p < 0) {
+					spy.p = 0
+					spy.v = -spy.v
+					let potential_damage = 0.0001*spy.v
+					if (potential_damage > 0.05) { hurt(potential_damage) }
+				}
+
+				spring_step(spx, tx, 4, 0.4, dt)
+				spring_step(spy, ty, 4, 0.4, dt)
 			}
 		}
 	}
@@ -486,8 +540,9 @@ let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
 	quakeGuy0.resize(48, 48)
 
 	onmousemove = (event) => { quakeGuy0.direct(event.clientX, event.clientY) }
+	onmouseout = (event) => { quakeGuy0.direct(max(0, min(event.clientX, innerWidth)), max(0, min(event.clientY, innerHeight))) }
 
-	onclick = (event) => { quakeGuy0.hurt(0.07) }
+	//onclick = (event) => { quakeGuy0.hurt(0.07) }
 
 	let t0 = gms()
 	let draw = () => {
@@ -511,3 +566,23 @@ let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
 //img('blocksrey.gif')
 //let header = header()
 //header.insert()
+
+
+
+
+
+
+
+
+
+
+{
+	"Favicons didn't exist until 1999."
+	"WebGL 1.0 came out in 2011. I guess we're in a time machine!"
+	"Back in the day, everything was a GIF!"
+	"88 by 31 sized buttons became widely popular on Yahoo!'s GeoCities platform."
+	"The font this website uses is from 1997!"
+	"Quake is a Doom clone."
+	"It's 1995!"
+	"Creepy Doom WADs"
+}

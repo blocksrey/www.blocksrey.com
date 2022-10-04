@@ -61,6 +61,14 @@ div {
 	float: right;
 }
 
+#container {
+	background-color: #f0a95d;
+	background-image: none;
+	outline: none;
+	margin: 0;
+	padding: 0;
+}
+
 #center {
 	width: 554px;
 	height: 460px;

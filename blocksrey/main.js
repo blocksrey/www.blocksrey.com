@@ -358,6 +358,7 @@ runFor(0.5)
 */
 
 // COVID stuff
+/*
 let request = new XMLHttpRequest()
 request.open('get', 'https://covid19.mathdro.id/api')
 request.send()
@@ -366,6 +367,7 @@ request.onload = () => {
 	document.getElementById('cases').innerHTML = 'Cases: ' + obj.confirmed.value
 	document.getElementById('deaths').innerHTML = 'Deaths: ' + obj.deaths.value
 }
+*/
 
 let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
 	i /= 2
@@ -575,14 +577,102 @@ let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
 
 
 
+let obscures = [
+	"This website's font is from 1997.",
+	"88 by 31 sized buttons became widely popular through Yahoo!'s GeoCities platform.",
+
+	"Favicons didn't exist until 1999.",
+	'GIFs only display 256 different colors max.',
+	'3.57954525Mhz',
+
+	'Unregistered HyperCam',
+	'Unregistered HyperCam 2',
+	'ALL YOUR BASE ARE BELONG TO US.',
+	'BOOM HEADSHOT!',
+	"IMMA FIRIN MAH' LAZER",
+	'Roflcopter',
+
+	'WebGL 1.0 came out in 2011',
+	'Back in the day, everything was a GIF!',
+	"What's a webpage?",
+	'George Bush Aerobics Newgrounds game made 3 hours before 9/11',
+
+	'Creepy Doom WADs',
+	'Quake is a Doom clone.',
+
+	'らんらんるー',
+	'ゆっくりしていってね！！！',
+	'小岩井よつば',
+
+	'Dillalade',
+	"It's 1995!",
+
+	'LOLWUT',
+	'LOLHOO',
+	'Minecraft vs. Roblox, The Unbiased Truth',
+	'Roblox broke Phantom Forces.',
+	'Lifetime OBC',
+	'Tix',
+	'Heli-Wars: Desert Attack',
+	'Base Wars',
+	'Phantom Forces aimbot',
+	'Phantom Forces slow-motion',
+	'#TheMaxFactor',
+	'Survive the Weegee',
+	'Roblox admins predict 2014 Ebola outbreak',
+	'Roblox trade currency',
+	'Jailbreak paid Phantom Forces after sealing their code.',
+	'Roblox employees cursing on stream',
+	'Empyrean Reignment + Gravity Coil',
+	'Aluminium Robot Tenticles', // Yes, 'tenticles' Roblox made a typo (I'm pretty sure I'm the only one who noticed it)
+]
+
+setInterval(() => {
+	print(obscures[floor(obscures.length*rand())])
+}, 10000)
+
+
+
+
+
+
+
+
+/*
+setInterval(() => {
+	print(document.activeElement.tabIndex)
+}, 1000)
+*/
 
 {
-	"Favicons didn't exist until 1999."
-	"WebGL 1.0 came out in 2011. I guess we're in a time machine!"
-	"Back in the day, everything was a GIF!"
-	"88 by 31 sized buttons became widely popular on Yahoo!'s GeoCities platform."
-	"The font this website uses is from 1997!"
-	"Quake is a Doom clone."
-	"It's 1995!"
-	"Creepy Doom WADs"
+	let canvas = document.createElement('canvas')
+	canvas.width = 16
+	canvas.height = 16
+
+	let c2d = canvas.getContext('2d')
+	c2d.font = '16px custom'
+
+	let link = document.createElement('link')
+	link.rel = 'shortcut icon'
+	document.head.appendChild(link)
+
+	let tx
+	let ty
+	addEventListener('mousemove', (event) => {
+		tx = event.clientX/innerWidth
+		ty = event.clientY/innerHeight
+	})
+
+	setInterval(() => {
+		c2d.fillStyle = 'red'
+		c2d.fillRect(0, 0, canvas.width, canvas.height)
+
+		let px = canvas.width*tx
+		let py = canvas.height*ty
+
+		c2d.fillStyle = 'white'
+		c2d.fillRect(px, py, 4, 4)
+
+		link.href = canvas.toDataURL()
+	}, 200)
 }

@@ -1,9 +1,0 @@
-TITLE("Welcome to the blog")
-
-PICTURE("lmfao.jpg")
-
-HEADER("Sooo, what is this?")
-
-PARAGRAPH("We're gonna do some cool things over here. So basically, I made this blog in a few days in order to make my portfolio look better, not even gonna lie. Anyways, I pulled out some of my old projects so you can see the inner-workings of them.")
-
-PROJECTS()

@@ -405,7 +405,7 @@ let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
 
 	for (let i = new_paths.length; i--;) {
 		new_images[i] = new Image()
-		new_images[i].src = '../image/misc/new/' + new_paths[i]
+		new_images[i].src = '../images/misc/new/' + new_paths[i]
 	}
 
 	var quakeGuy = (canvas) => {

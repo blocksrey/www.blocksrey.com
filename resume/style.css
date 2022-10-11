@@ -1,76 +1,59 @@
 * {
-	FONT-SIZE:4MM;
+	font-size: 4mm;
+	image-rendering: pixelated;
+	text-rendering: optimizeSpeed;
+	margin: auto;
 }
 
-HTML {
-	MARGIN:0MM;
-	PADDING:0MM;
-
-	BACKGROUND-COLOR:BLACK;
-	DISPLAY:FLEX;
-	JUSTIFY-CONTENT:CENTER;
-	BACKGROUND-IMAGE:URL(wood.jpg);
-	BACKGROUND-REPEAT:REPEAT;
+html {
+	background-color: black;
+	justify-content: center;
+	background-image: url(anima_blue.gif);
+	background-repeat: repeat;
 }
 
-BODY {
-	MARGIN:0MM;
-	PADDING:0MM;
-
-	BACKGROUND-COLOR:WHITE;
-	WIDTH:210MM;
-	HEIGHT:297MM;
+body {
+	background-color: white;
+	width: 210mm;
+	height: 297mm;
 }
 
-IMG {
-	MARGIN:0MM;
-	PADDING:0MM;
-
-	WIDTH:3CM;
-	HEIGHT:4CM;
-
-	float:RIGHT;
+img {
+	width: 3cm;
+	height: 4cm;
+	float: right;
 }
 
 .hanko {
-	WIDTH:12.5MM;
-	HEIGHT:12.5MM;
+	width: 12.5mm;
+	height: 12.5mm;
 }
 
-HEADER {
-	MARGIN-TOP:0MM;
-	PADDING:0MM;
-
-	FONT-WEIGHT:BOLD;
-	FONT-SIZE:4MM;
+header {
+	font-weight: bold;
+	font-size: 4mm;
 }
 
-DIV {
-	MARGIN:0MM;
-	PADDING:8MM;
-	PADDING-BOTTOM:2MM;
+div {
+	padding: 8mm;
+	padding-bottom: 2mm;
 }
 
 .exp {
-	MARGIN:0MM;
-	PADDING:0MM;
-
-	margin-left:6MM;
-	margin-bottom:4MM;
+	padding: 0;
+	margin-left: 6mm;
+	margin-bottom: 4mm;
 }
 
 .experience {
-	display:inline-block;
+	display: inline-block;
 }
 
 .skills {
-	text-align:right;
-	float:right;
+	text-align: right;
+	float: right;
 }
 
-A {
-	MARGIN:0MM;
-	PADDING:0MM;
-
-	TEXT-DECORATION:NONE;
+a {
+	text-decoration: none;
 }

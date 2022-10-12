@@ -8,7 +8,7 @@
 
 /* This section pretty much disables ambiguous formatting across browsers. */
 * {
-	margin: 0;
+	margin: auto;
 	image-rendering: pixelated;
 	text-rendering: optimizeSpeed;
 	font-size: 0;
@@ -72,11 +72,6 @@ div {
 #center {
 	width: 554px;
 	height: 460px;
-}
-
-#favicon {
-	width: 32px;
-	height: 32px;
 }
 
 .covid { color: #c30400; }

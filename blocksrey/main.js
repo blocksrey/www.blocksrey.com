@@ -104,8 +104,9 @@ let slerp = (a, b) => {
 
 
 
-let camp = vec3(0, 0, -10)
+let camp = vec3(0, 0, -4)
 let camo = vec4(0, 0, 0, 1)
+
 
 
 
@@ -279,7 +280,9 @@ requestAnimationFrame(renderLoop)
 let renderLoop = () => {
 	let t1 = 0.001*gms()
 
+	camp.x = 3*sin(0.26*t1)
 	camp.y = 2*sin(t1)
+	camp.z = -4 + 3*sin(0.3*t1)
 	//console.log(camp.y)
 
 	gl.uniform3f(campUniformLocation, ...lst3(camp))
@@ -535,6 +538,8 @@ let drawSprite = (c2d, image, tx, ty, sx, sy, px, py, i) => {
 	onresize = () => {
 		canvas.width = innerWidth
 		canvas.height = innerHeight
+
+		rati = innerHeight/innerWidth
 	}
 
 	let quakeGuy0 = quakeGuy(canvas)

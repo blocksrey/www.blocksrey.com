@@ -28,22 +28,27 @@ body {
 }
 
 p {
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 1.2;
-	color: #f4d0bc;
+	color: #dec7ad;
 	display: inline;
 }
 
 /* I'd say this looks pretty good */
 a {
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 1.2;
 	font-weight: bold;
 	color: #f0a95d;
 }
 
+a:visited { color: #d96d5f; }
+
+/* dec7ad */
+/* f0dcc5 */
 /* f0a95d */
 /* d96d5f */
+/* 382724 */
 /* 593724 */
 /* c30400 */
 
@@ -52,7 +57,12 @@ div {
 	margin: 10px;
 	margin-top: 0;
 	padding: 10px;
-	outline: #593724 solid 2px;
+	outline: #382724 solid 2px;
+}
+
+embed {
+	border-style: solid;
+	background-color: #f0dcc5;
 }
 
 #right {
@@ -75,3 +85,5 @@ div {
 }
 
 .covid { color: #c30400; }
+
+input { font-size: 16px; }

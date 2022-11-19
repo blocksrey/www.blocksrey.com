@@ -1,4 +1,4 @@
-// Node.bs by Jeff Skinner
+// Node.bs by Jeffrey Skinner
 
 let https = require('https') // More like, express
 let fs = require('fs')

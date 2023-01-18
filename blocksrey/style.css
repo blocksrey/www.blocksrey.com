@@ -1,5 +1,13 @@
 /* blocksrey */
 
+/* dec7ad */
+/* f0dcc5 */
+/* f0a95d */
+/* d96d5f */
+/* 382724 */
+/* 593724 */
+/* c30400 */
+
 /* If you're not using woff2, you're bad. */
 @font-face {
 	font-family: custom;
@@ -8,14 +16,12 @@
 
 /* This section pretty much disables ambiguous formatting across browsers. */
 * {
+	color: #dec7ad;
 	margin: auto;
 	image-rendering: pixelated;
 	text-rendering: optimizeSpeed;
-	font-size: 0;
 	font-family: custom;
 	text-align: left;
-	white-space: pre-wrap;
-	line-height: 0;
 	/*cursor: url(windows-98/Cursor79.cur), auto;*/
 }
 
@@ -27,63 +33,29 @@ body {
 	width: 720px;
 }
 
-p {
-	font-size: 16px;
-	line-height: 1.2;
-	color: #dec7ad;
-	display: inline;
+h2 {
+	margin: 12px;
+	margin-left: 0;
 }
 
 /* I'd say this looks pretty good */
 a {
-	font-size: 16px;
-	line-height: 1.2;
 	font-weight: bold;
 	color: #f0a95d;
 }
 
 a:visited { color: #d96d5f; }
 
-/* dec7ad */
-/* f0dcc5 */
-/* f0a95d */
-/* d96d5f */
-/* 382724 */
-/* 593724 */
-/* c30400 */
-
 div {
+	margin-bottom: 8px;
+	padding: 8px;
 	background: url(zstngd_32.gif);
-	margin: 10px;
-	margin-top: 0;
-	padding: 10px;
 	outline: #382724 solid 2px;
+	box-shadow: 0px 8px 32px black;
 }
 
+/* Puniko Software License */
 embed {
 	border-style: solid;
 	background-color: #f0dcc5;
 }
-
-#right {
-	width: 96px;
-	height: 460px;
-	float: right;
-}
-
-#container {
-	background-color: #f0a95d;
-	background-image: none;
-	outline: none;
-	margin: 0;
-	padding: 0;
-}
-
-#center {
-	width: 554px;
-	height: 460px;
-}
-
-.covid { color: #c30400; }
-
-input { font-size: 16px; }

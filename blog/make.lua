@@ -14,6 +14,7 @@ local htm_head =
 
 local index_s = htm_head
 
+--[[
 local function parse(info)
 	index_s =
 		index_s
@@ -27,26 +28,36 @@ local function parse(info)
 		..'<p>'..info.created..'</p>'
 		..'\n</div>'
 end
+]]
+
+local function parse(info)
+	index_s =
+		index_s
+		.."\n<a href='"..info.title..".htm'>"..info.title..'</a>'
+	return htm_head..info.content
+end
+
+local function escapes(str) return str:gsub('[ ]', '\\ '):gsub('[&]', '\\&') end
 
 exec('rm *.htm')
 
 local ls_str = exec('ls')
 
-for f_name in ls_str:gmatch('[^\n]+') do
-	local path = f_name..'/page.txt'
-	local e_path = f_name:gsub('[ ]', '\\ '):gsub('[&]', '\\&')..'/page.txt'
+for fname in ls_str:gmatch('[^\n]+') do
+	local path = fname..'/'..fname..'.plg'
+	local e_path = escapes(fname)..'/page.txt'
 
 	local page_h = open(path, 'r')
 
 	if page_h then
 		local info = {}
 
-		info.title = f_name
-		info.content = page_h:read('*a')
+		info.title = fname
+		info.content = exec('luajit Plogger/plogger.lua '..escapes(path))
 		info.created = exec('stat '..e_path..' | grep Birth')
 		info.modified = exec('stat '..e_path..' | grep Modify')
 
-		local htm_h = open(f_name..'.htm', 'w')
+		local htm_h = open(fname..'.htm', 'w')
 		htm_h:write(parse(info))
 		htm_h:close()
 
@@ -66,16 +77,7 @@ htm_h:close()
 
 
 
-
-
-
-
-
-
-
-
-
-
+--[[
 local tokens = {
 	['!['] = embed_image;
 	[']'] = end_embed_image;
@@ -102,3 +104,4 @@ end
 for i = 1, #content do
 	local state = step_char(content:sub(i, i))
 end
+]]

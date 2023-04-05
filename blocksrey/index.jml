@@ -1,0 +1,71 @@
+@!doctype,html
+
+@meta,charset='utf8'
+@meta,name='description',content='The greatest and fakest place on the Web! This is where it all started.'
+@meta,name='keywords',content='dev blog, 3d graphics dev, 3d dev, game dev, 3d graphics, 3d engine dev, 3d engines, horror dev, indie dev blog, indie dev, technical blog, 3d game development blog, game physics blog, daily programming blog'
+@meta,name='author',content='Jeffrey Skinner'
+
+@a,href='index.htm'
+	@img,src='blocksrey.gif'
+
+@div
+	Welcome to Jeff's home. As you can see, you're stuck in the '90s! But don't worry, there's a lot to explore around here. Don't get lost.
+
+@div
+	@h2
+		Directory
+	@a,href='../blog/index.htm'
+		blog
+	@a,href='../2204355/index.htm'
+		2204355
+	@a,href='../resume/index.htm'
+		resume
+	@a,href='../puniko/index.htm'
+		puniko
+	@a,href='../radix/index.htm'
+		radix
+	@a,href='../villager/index.htm'
+		villager
+	@a,href='../skeeball/index.htm'
+		skeeball
+	@a,href='../discord/index.htm'
+		discord
+	@a,href='../履歴書/index.htm'
+		履歴書
+	@a,href='../どっか/index.htm'
+		どっか
+
+@div
+	@h2
+	Media
+
+	@a,href='https://github.com/blocksrey'
+	@img,src='../icons/github.webp'
+	@a,href='https://blocksrey.booth.pm'
+	@img,src='../icons/booth.webp'
+	@a,href='https://blocksrey.itch.io'
+	@img,src='../icons/itch.webp'
+	@a,href='https://twitter.com/blocksrey'
+	@img,src='../icons/twitter.webp'
+	@a,href='https://facebook.com/blocksery'
+	@img,src='../icons/facebook.webp'
+	@a,href='https://youtube.com/blocksrey'
+	@img,src='../icons/youtube.webp'
+	@a,href='https://instagram.com/blocksrey'
+	@img,src='../icons/instagram.webp'
+	@a,href='../index.htm'
+	@img,src='../icons/blocksrey.webp'
+	@a,href='https://roblox.com/users/9835437/profile'
+	@img,src='../icons/roblox.webp'
+
+@div
+	@canvas,width='320',height='200'
+	WebGL graphics in the browser!? Isn't that supposed to come out in 2011? I guess we time traveled or something...
+
+@div
+	Hi there! Developing games and things 3D-related is my passion. I'm also a fan of obscure memorabilia from the early web. The site's directive includes Internet anomolies and random projects I've worked on. Feel free to e-mail me at:
+	@a,href='mailto:jeff@je.gy'
+	jeff@je.gy
+
+	@center
+	@img,src='88x31/

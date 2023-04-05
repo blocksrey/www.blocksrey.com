@@ -1,0 +1,7 @@
+{
+	"name": "Blocksrey's Amazing Portfolio",
+	"version": "1.6.9",
+	"scripts": {
+		"start": "node sitemap.js"
+	}
+}

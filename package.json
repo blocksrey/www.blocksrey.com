@@ -1,6 +1,6 @@
 {
 	"name": "blocksreybones",
-	"version": "1.6.9",
+	"version": "1.6.99",
 	"scripts": {
 		"build": "node sitemap.js"
 	},

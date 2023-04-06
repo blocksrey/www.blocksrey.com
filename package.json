@@ -1,5 +1,5 @@
 {
-	"name": "Wonderful Website Emporium",
+	"name": "blocksreybones",
 	"version": "1.6.9",
 	"scripts": {
 		"build": "node sitemap.js"

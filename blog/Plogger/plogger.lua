@@ -1,41 +1,41 @@
-local gsub = string.gsub
-
-local file_name = arg[1]:match("([^/\\]+)%.%a+")
-local file = io.open(arg[1], 'r')
-local text = file:read('a')
+local file_name = arg[1]:gsub('\\', '')
+local file = io.open(arg[1])
+local state = file:read('a')
 file:close()
 
--- Create an empty table to store the TOC items
-local toc = {}
-
 -- Iterate through the lines of the file, looking for headers
-for line in text:gmatch('%[(.-)%]') do
-    table.insert(toc, line)
+local toc = {}
+for line in state:gmatch('%[(.-)]') do table.insert(toc, line) end
+if #toc > 0 then
+	-- Build the TOC HTML
+	toc_html = '<h2>Table of Contents</h2>'
+	for i, v in next, toc do toc_html = toc_html..i..'. '..'<a href="#'..v..'">'..v..'</a><br>' end
+	toc_html = '<div class=toc>'..toc_html..'</div>'
+else
+	toc_html = ''
 end
 
--- Build the TOC HTML
-local toc_html = '<h2>Table of Contents</h2>'
-for i, item in ipairs(toc) do
-    toc_html = toc_html..i..'. '..'<a href="#'..item..'">'..item..'</a><br>'
-end
-toc_html = '<div class="toc">'..toc_html..'</div>'
-
-text = gsub(text, '%[([^\n]+)%]', '<h2 id="%1">%1</h2>')
-
--- Replace URLs with appropriate HTML
-text = gsub(text, '(%a+://[%w_/%.%?%%=~&-]+%.(%a+))', function(link, ext)
+state = state:gsub('<([%w_/%.%?%%=~&-]+%.(%w+))>', function(path, ext)
+    path = file_name..'/'..path
     if ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'gif' or ext == 'webp' then
-        return '<img src="'..link..'">'
+        return '<img src="'..path..'">'
     elseif ext == 'mp4' or ext == 'ogg' or ext == 'webm' then
-        return '<video src="'..link..'" controls></video>'
-    else
-        return '<a href="'..link..'">'..link..'</a>'
+        return '<video src="'..path..'" controls></video>'
     end
 end)
 
+state = state:gsub('%(([%w_/%.%?%%=~&-]+)%)', function(path)
+    return '<a href="'..path..'">'..path..'</a>'
+end)
+
+-- Create paragraph headers
+state = state:gsub('%[([^\n]+)%]', '<h2 id="%1">%1</h2>')
+
 -- Add <p> tags around paragraphs
-text = gsub(text..'\n\n', '([^\n]+)(\n\n)', '<p>%1</p>%2')
+state = (state..'\n\n'):gsub('([^\n]+)(\n\n)', '<p>%1</p>')
 
-text = '<html><head><title>'..file_name..'</title></head><body><h1>'..file_name..'</h1>'..toc_html..text
+state = '<title>'..file_name..'</title>'..state
+state = '<a href="'..file_name..'.htm"><h1>'..file_name..'</h1></a>'..toc_html..state
+state = '<br><a href=index.htm>Back</a>'..state
 
-print(text)
+print(state)

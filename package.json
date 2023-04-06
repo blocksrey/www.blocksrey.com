@@ -1,0 +1,10 @@
+{
+	"name": "Blocksrey's Wonderful Website Emporium",
+	"version": "1.6.9",
+	"scripts": {
+		"build": "node sitemap.js"
+	},
+	"dependencies": {
+		"vercel": "^24.2.0"
+	}
+}

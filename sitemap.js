@@ -1,3 +1,5 @@
+console.log('Uhhh we about to do some sitemap generation')
+
 const fs = require('fs')
 const path = require('path')
 
@@ -32,3 +34,5 @@ function generateSitemap() {
 }
 
 generateSitemap() // generate the sitemap when the script is run
+
+console.log('End of sitemap generation I guess')

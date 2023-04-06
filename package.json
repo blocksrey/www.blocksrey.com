@@ -1,5 +1,5 @@
 {
-	"name": "Blocksrey's Wonderful Website Emporium",
+	"name": "Wonderful Website Emporium",
 	"version": "1.6.9",
 	"scripts": {
 		"build": "node sitemap.js"

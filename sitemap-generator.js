@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const baseUrl = 'https://www.example.com/' // replace with your website's base URL
+const baseUrl = 'https://www.blocksrey.com/' // replace with your website's base URL
 const rootDir = '.' // replace with the name of your website's root directory
 
 // recursively find all files in the specified directory and its subdirectories

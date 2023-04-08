@@ -1,10 +1,7 @@
 {
-	"name": "blocksreybones",
-	"version": "1.6.99",
+	"name": "blocksrey",
+	"version": "1.7.0",
 	"scripts": {
-		"build": "node sitemap.js"
-	},
-	"dependencies": {
-		"vercel": "^24.2.0"
+		"build": "node sitemap-generator.js"
 	}
 }

@@ -16,16 +16,16 @@ else
 end
 
 state = state:gsub('<([%w_/%.%?%%=~&-]+%.(%w+))>', function(path, ext)
-    path = file_name..'/'..path
-    if ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'gif' or ext == 'webp' then
-        return '<img src="'..path..'">'
-    elseif ext == 'mp4' or ext == 'ogg' or ext == 'webm' then
-        return '<video src="'..path..'" controls></video>'
-    end
+	path = file_name..'/'..path
+	if ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'gif' or ext == 'webp' then
+		return '<img src="'..path..'">'
+	elseif ext == 'mp4' or ext == 'ogg' or ext == 'webm' then
+		return '<video src="'..path..'" controls></video>'
+	end
 end)
 
 state = state:gsub('%(([%w_/%.%?%%=~&-]+)%)', function(path)
-    return '<a href="'..path..'">'..path..'</a>'
+	return '<a href="'..path..'">'..path..'</a>'
 end)
 
 -- Create paragraph headers

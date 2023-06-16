@@ -24,9 +24,13 @@
 }
 
 /* Centered background actually isn't correct */
-html { background: url(background/zwart.jpg); }
+html {
+	background: url(background/zwart.jpg);
+}
 
-h1, h2 { margin: 0; }
+h1, h2 {
+	margin: 0;
+}
 
 body {
 	text-align: center;
@@ -40,7 +44,9 @@ a {
 	color: #f0a95d;
 }
 
-a:visited { color: #d96d5f; }
+a:visited {
+	color: #d96d5f;
+}
 
 div {
 	text-align: left;

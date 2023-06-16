@@ -1,12 +1,67 @@
-So I made something cool.
+[Why Do I Love 3D Graphics?]
 
-Here's what the code looks like:
-```
-int main() {
-	return 0;
-}
-```
+There's something magical about 3D graphics that has always fascinated me. I think it's the sense of immersion and realism that they can create. When done correctly, 3D graphics can transport you into a different world or completely change your perspective on reality. They can also evoke strong emotions, make abstract concepts more tangible, and provide rich visual experiences that engage multiple senses.
 
-(lol.gif) Isn't that awesome?
+I also love the technical aspect of 3D graphics and the challenge of creating something visually stunning by manipulating lines of code. There's a great sense of achievement that comes from designing and building something from scratch, and 3D graphics provide an excellent platform for this. Additionally, there's always something new to learn in the world of 3D graphics, whether it be new rendering techniques, software tools, or optimization strategies.
 
-Here are some more scenes from the past: (omg.gif) (oo.gif) (wtf.gif)
+<integerbug.gif>
+
+
+
+[How Do You Go About Making 3D Graphics with Just a C Compiler?]
+
+Creating 3D graphics from scratch with just a C compiler can be a challenging but rewarding experience. The approach I took involved writing an integer-only software renderer that rasterized geometries such as triangles, and then shaded them using a simple lighting model. I started with the basics, such as matrix operations, rasterization algorithms, and bitwise manipulations for integer-only arithmetic operations.
+
+I also had to create a file format to store the scene data, which included the camera position and orientation, lighting information, and the geometries themselves. Once the file was loaded, I implemented a rendering pipeline consisting of vertex processing, primitive assembly, rasterization, and pixel shading.
+
+It took some time and effort to debug and optimize the code, but the end result was a scene that was beautifully rendered in real time, despite the limitations of the integer-only arithmetic.
+
+<cutsize.gif>
+
+
+
+[Ways to Make It Better]
+
+There are always ways to improve a 3D graphics project, especially when working on a limited platform such as a C compiler.
+
+One way to improve the rendering quality would be to implement more advanced shading models, such as phong lighting or physically based rendering. Another approach could be to incorporate anti-aliasing or depth of field effects to add more realism to the scene.
+
+My renderer also currently only supports flat shading, so implementing smooth shading or even more complex mesh algorithms could contribute to the aesthetics of the final product.
+
+Another area that could be improved is the speed of the renderer. Although it’s already optimized for performance, there’s always room for improvement. For example, I could add more parallelism to take advantage of multi-core processors or use more efficient data structures in the rendering pipeline.
+
+Lastly, I could add more features to the scene, such as interactive camera controls, texture mapping, or even real-time physics simulation.
+
+
+
+[Creating a Japan Rice Field Software Renderer]
+
+Creating a Japan rice field software renderer was a challenging but thrilling experience. The final product was a simple raytracer that used integer-only arithmetic operations and depth sorting algorithms to create a beautiful, immersive 3D scene.
+
+Initially, I started with floats for my renderer, but I soon realized the limitations of using floating-point arithmetic when dealing with large numbers. This led me to port the renderer to integers, a challenging task that required me to redesign the rendering pipeline and optimize various algorithms for integer calculations.
+
+One of the highlights of this project was creating the rice field terrain mesh and implementing a realistic water simulation algorithm that reflected the surrounding environment. I was also able to incorporate texture mapping and lighting effects to create a visually stunning scene.
+
+In the future, I hope to add more features to the project, such as interactive camera controls, physics-based animations, and sound effects, to further enhance the user experience.
+
+Overall, creating a Japan rice field software renderer has been a fantastic journey that allowed me to explore the potential of 3D graphics and indulge my creative impulses.
+
+
+
+[Using the Japan Rice Field Software Renderer for a GitHub Readme]
+
+After completing the Japan rice field software renderer project, I wanted to find a way to showcase it on my GitHub profile. That's when I got the idea of creating a 3D game-like experience right on my GitHub Readme.
+
+To achieve this, I created an HTML/CSS/JavaScript web application that interacted with the renderer's server-side C implementation. The web application allowed users to control a character in the scene and move around the rice field using buttons and keyboard controls. The server-side C code then updated the scene to reflect the character's movement, generating new images that were returned to the web application.
+
+With the help of GitHub actions, I was able to deploy the web application to a cloud server automatically whenever changes were made to the GitHub repository. This allowed me to showcase the Japan rice field software renderer to anyone visiting my GitHub profile, truly bringing the project to life.
+
+Now, anyone visiting my profile can interact with the Japan rice field scene, explore its beauty, and experience the magic of 3D graphics right from their browser. This project has not only allowed me to showcase my technical skills but also my creativity and passion for 3D graphics.
+
+
+
+[Conclusion]
+
+In conclusion, creating a 3D graphics project with just a C compiler was both challenging and rewarding. It allowed me to exercise my programming skills while also satisfying my creative impulses. Throughout the project, I learned many new concepts and techniques, and I also gained a deeper appreciation for the power and beauty of 3D graphics.
+
+Although my project is currently still in progress, I'm excited about the potential of what I've created so far, and I look forward to exploring new possibilities in the future.

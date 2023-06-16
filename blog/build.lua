@@ -50,7 +50,10 @@ print(finalhtm)
 
 
 
-
+local function readclose(iofunc, input)
+	local handle = iofunc(input)
+	return handle:read('a'), handle:close()
+end
 
 
 
@@ -66,11 +69,11 @@ local function parseplog(path)
 	local state = file:read('a')
 	file:close()
 
-	-- Iterate through the lines of the file, looking for headers
+	--Iterate through the lines of the file, looking for headers
 	local toc = {}
 	for line in state:gmatch('%[(.-)]') do table.insert(toc, line) end
 	if #toc > 0 then
-		-- Build the TOC htmL
+		--Build the TOC htmL
 		tochtm = '<h2>Table of Contents</h2>'
 		for i, v in next, toc do tochtm = tochtm..i..'. '..'<a href="#'..v..'">'..v..'</a><br>' end
 		tochtm = '<div class=toc>'..tochtm..'</div>'
@@ -79,22 +82,23 @@ local function parseplog(path)
 	end
 
 	state = state:gsub('<([%w_/%.%?%%=~&-]+%.(%w+))>', function(path, ext)
+		ext = ext:lower()
 		path = title..'/'..path
 		if ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'gif' or ext == 'webp' then
 			return '<img src="'..path..'">'
-		elseif ext == 'mp4' or ext == 'ogg' or ext == 'webm' or ext == "MOV" then
+		elseif ext == 'mp4' or ext == 'ogg' or ext == 'webm' or ext == "mov" then
 			return '<video src="'..path..'" controls></video>'
 		end
 	end)
 
 	state = state:gsub('%(([%w_/%.%?%%=~&-]+)%)', function(path)
-		return '<a href="'..path..'">'..path..'</a>'
+		return '<a href="'..title..'/'..path..'">'..path..'</a>'
 	end)
 
-	-- Create paragraph headers
+	--Create paragraph headers
 	state = state:gsub('%[([^\n]+)%]', '<h2 id="%1">%1</h2>')
 
-	-- Add <p> tags around paragraphs
+	--Add <p> tags around paragraphs
 	state = (state..'\n\n'):gsub('([^\n]+)(\n\n)', '<p>%1</p>')
 
 	state = '<title>'..title..'</title>'..state
@@ -104,16 +108,17 @@ local function parseplog(path)
 	state = '<div>'..state..'</div>'
 	state = '<link href="../blocksrey/style.css" rel=stylesheet>'..state
 
-	state = state..'<a href="'..title..'/'..title..'.plg">Plog Source File</a>'
+	state = state..'<h2>Files contained in this Plog:</h2>'
+	local listed = readclose(io.popen, 'ls "'..title..'"')--this will break if there are double quotes in the name
+	for filename in listed:gmatch('[^\n]+') do
+		state = state..'<a href="'..title..'/'..filename..'">'..filename..'</a><br>'
+	end
 
 	return state
 end
 
 
-local function readclose(iofunc, input)
-	local handle = iofunc(input)
-	return handle:read('a'), handle:close()
-end
+
 
 --[[
 local doc = node('!doctype htm')

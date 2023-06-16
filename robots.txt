@@ -1,0 +1,43 @@
+User-agent: *
+Disallow: /.git
+Disallow: /2204355
+Disallow: /as/bumps
+Disallow: /blocksrey/88x31
+Disallow: /blocksrey/background
+Disallow: /blocksrey/quake
+Disallow: /blog/Aerodynamics in Roblox
+Disallow: /blog/B-Hop Physics
+Disallow: /blog/Bad Dream Encounter
+Disallow: /blog/Blog Page Generator
+Disallow: /blog/Bow & Arrow Game
+Disallow: /blog/Broken Laptop turns into Server
+Disallow: /blog/Desert Battle
+Disallow: /blog/F-15 Simulator
+Disallow: /blog/Framerate-Independent Springs
+Disallow: /blog/HDRI Raytracer
+Disallow: /blog/Helicopter Simulator
+Disallow: /blog/Jailbreak v Phantom Forces
+Disallow: /blog/Japan Software Renderer
+Disallow: /blog/Limbs with Inverse Kinematics
+Disallow: /blog/Missile Guidance in Roblox
+Disallow: /blog/Motion Blur in Minecraft
+Disallow: /blog/Old Account Emails
+Disallow: /blog/Oscilloscope
+Disallow: /blog/P.T. Remake
+Disallow: /blog/Plogger
+Disallow: /blog/Potential Anomoly 1
+Disallow: /blog/Procedural Animations
+Disallow: /blog/Promoting Cohesiveness with Divs
+Disallow: /blog/Ramen Mathematics
+Disallow: /blog/Realistic Car Physics in Roblox
+Disallow: /blog/Roblox Trade Currency Incident
+Disallow: /blog/Snow Simulation in Roblox
+Disallow: /blog/TechWise Summer Project
+Disallow: /blog/The AI Singularity: A Vibrator's Tale of Morse Code and Mayhem
+Disallow: /blog/misc
+Disallow: /favs
+Disallow: /icons
+Disallow: /images
+Disallow: /履歴書
+
+Sitemap: https://www.blocksrey.com/sitemap.xml

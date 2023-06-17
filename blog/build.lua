@@ -55,7 +55,7 @@ doc.insert(body)
 local finalhtm = doc.close()
 
 print(finalhtm)
-]]
+--]]
 
 
 
@@ -73,58 +73,70 @@ end
 
 
 local function parseplog(path)
+	local state = ''
 	local title = path:gsub('\\', ''):match("/(.*)"):sub(1, -5)
-	local file = io.open(path)
-	local state = file:read('a')
-	file:close()
-
 	state = state..'<title>'..title..'</title>'
 	state = state..'<link href="../blocksrey/style.css" rel=stylesheet>'
+	state = state..'<a href="index.htm">Backtrack</a>'
 
-	state = state..'<p align=left><a href="index.htm">Back</a></p>'
-	state = state..'<img src=../blocksrey/horizontal_rule.gif>'
-	state = state..'<p align=left><a href="'..title..'.htm"><h1>'..title..'</h1></a></p>'
+	do
+		local content = readclose(io.open, path)
 
-	--Iterate through the lines of the file, looking for headers
-	local toc = {}
-	for line in state:gmatch('%[(.-)]') do
-		table.insert(toc, line)
-	end
-	if #toc > 0 then
-		tochtm = '<h2>TOC</h2>'
-		for i, v in next, toc do
-			tochtm = tochtm..i..'. '..'<a href="#'..v..'">'..v..'</a><br>'
+		--Iterate through the lines of the file, looking for headers
+		local toc = {}
+		for line in content:gmatch('%[(.-)]') do
+			table.insert(toc, line)
 		end
-		tochtm = '<div align=left>'..tochtm..'</div>'
-	else
 		tochtm = ''
-	end
-	state = state..tochtm
-
-	state = state:gsub('<([%w_/%.%?%%=~&-]+%.(%w+))>', function(path, ext)
-		ext = ext:lower()
-		path = title..'/'..path
-		if ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'gif' or ext == 'webp' then
-			return '<div align=center><img height=200 src="'..path..'"></div>'
-		elseif ext == 'mp4' or ext == 'ogg' or ext == 'webm' or ext == "mov" then
-			return '<video src="'..path..'" controls></video>'
+		if #toc > 0 then
+			tochtm = '<h3 align=center>CHAPTERS</h3>'
+			local tocstuff = ''
+			for i, v in next, toc do
+				tocstuff = tocstuff..i..'. '..'<a href="#'..v:upper()..'">'..v..'</a><br>'
+			end
+			tochtm = tochtm..'<table align=center cellpadding=0 cellspacing=0><td>'..tocstuff..'</td></table>'
 		end
-	end)
+		state = state..tochtm
 
-	state = state:gsub('%(([%w_/%.%?%%=~&-]+)%)', function(path)
-		return '<a href="'..title..'/'..path..'">'..path..'</a>'
-	end)
+		state = state..'<h1 align=center><a href="'..title..'.htm">'..title..'</a></h1>'
 
-	state = state:gsub('%[([^\n]+)%]', '<h2 id="%1">%1</h2>')--Create paragraph headers
-	state = (state..'\n\n'):gsub('([^\n]+)(\n\n)', '<p align=left>%1</p>')--Add <p> tags around paragraphs
+		content = content:gsub('<([%w_/%.%?%%=~&-]+%.(%w+))>', function(path, ext)
+			ext = ext:lower()
+			path = title..'/'..path
+			if ext == 'jpg' or ext == 'png' or ext == 'gif' or ext == 'webp' then
+				return '<div align=center><img height=200 src="'..path..'"></div>'
+			elseif ext == 'mp4' or ext == 'ogg' or ext == 'webm' or ext == 'mov' then
+				return '<div align=center><video height=200 src="'..path..'" controls></video></div>'
+			end
+		end)
 
-	state = state..'<img src=../blocksrey/horizontal_rule.gif>'
+		content = content:gsub('%(([%w_/%.%?%%=~&-]+)%)', function(path)
+			return '<a href="'..title..'/'..path..'">'..path..'</a>'
+		end)
 
-	state = state..'<h3>Files contained in this Plog:</h3>'
+		content = content:gsub('%[([^\n]+)%]', function(match)
+			local uppered = match:upper()
+			return '<h3 id="'..uppered..'">'..uppered..'</h3>'
+		end)
+
+		content = (content..'\n\n'):gsub('([^\n]+)(\n\n)', '<p align=left>%1</p>')--Add <p> tags around paragraphs
+
+		state = state..content
+	end
+
+	state = state..'<img src=../blocksrey/barbed_wire.gif>'
+
+	local plogfiles = ''
+	plogfiles = plogfiles..'<h3>FILES CONTAINED IN THIS PLOG</h3>'
 	local listed = readclose(io.popen, 'ls "'..title..'"')--this will break if there are double quotes in the name
 	for filename in listed:gmatch('[^\n]+') do
-		state = state..'<p align=left><a href="'..title..'/'..filename..'">'..filename..'</a></p>'
+		plogfiles = plogfiles..'<a href="'..title..'/'..filename..'">'..filename..'</a><br>'
 	end
+	plogfiles = '<table align=right><td>'..plogfiles..'</td></table>'
+
+	state = state..plogfiles
+
+	state = state..'<div align=center><font size=1><img src=../blocksrey/barrio_logo_huge.gif align=texttop><a href=../puniko/index.htm>&copy 2022, Jeffrey Skinner. All rights reserved.</a></font></div>'
 
 	return state
 end
@@ -132,57 +144,38 @@ end
 
 
 
---[[
-local doc = node('!doctype htm')
 
-do
-	local style = node('link')
-	style.set({rel = 'stylesheet', href = '../blocksrey/style.css'})
-	doc.insert(style)
-end
-]]
 
---shared.insert('<!doctype htm>')
---shared.insert('<link rel=stylesheet href=../blocksrey/style.css>')
---shared.insert('<a href=../blocksrey/index.htm><img src=../blocksrey/blocksrey.gif></a>')
-
---local homehtm = node('!doctype htm')
+readclose(io.popen, 'rm *.htm')
 
 local homehtm = ''
 homehtm = homehtm..'<title>Enter the Plog</title>'
 homehtm = homehtm..'<link href="../blocksrey/style.css" rel=stylesheet>'
+homehtm = homehtm..'<a href="../index.htm">Backtrack</a>'
 
-local function parse(info)
-	homehtm = homehtm..'<br><a href="'..info.title..'.htm">'..info.title..'</a>'
-	return info.content
-end
+homehtm = homehtm..'<h3 align=right>Ancient chronicles litter this asylum...</h3>'
 
-readclose(io.popen, 'rm *.htm')
-
+local list = ''
 local listed = readclose(io.popen, 'ls')
-
 for title in listed:gmatch('[^\n]+') do
 	local path = title..'/'..title..'.plg'
 
 	local ploghandle = io.open(path)
 	if ploghandle then
-		local info = {}
-
-		info.title = title
-		info.content = parseplog(path)
+		list = list..'<li><a href="'..title..'.htm">'..title..'</a></li>'
 
 		local handle = io.open(title..'.htm', 'w')
-		handle:write(parse(info))
+		handle:write(parseplog(path))
 		handle:close()
 
 		ploghandle:close()
 	end
 end
 
-homehtm = homehtm..'<p align=left><a href="../index.htm">Back</a></p>'
-homehtm = homehtm..'<img src=../blocksrey/horizontal_rule.gif>'
-homehtm = homehtm..'<h2>An uncharted novel awaits you...</h2>'
-homehtm = '<div align=left>'..homehtm..'</div>'
+homehtm = homehtm..list
+
+homehtm = homehtm..'<img src=../blocksrey/barbed_wire.gif>'
+homehtm = homehtm..'<div align=center><font size=1><img src=../blocksrey/barrio_logo_huge.gif align=texttop><a href=../puniko/index.htm>&copy 2022, Jeffrey Skinner. All rights reserved.</a></font></div>'
 
 local handle = io.open('index.htm', 'w')
 handle:write(homehtm)

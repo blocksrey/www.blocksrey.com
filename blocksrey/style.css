@@ -10,32 +10,15 @@
 /* 593724 */
 /* c30400 */
 
-/* If you're not using woff2, you're bad */
-@font-face {
-	font-family: oldjap;
-	src: url(gotp5.woff2);
-}
-
-/* This section pretty much disables ambiguous formatting across browsers */
-* {
-	color: #dec7ad;
-	image-rendering: pixelated;
-	text-rendering: optimizeSpeed;
-	font-family: oldjap;
-	margin: 0;
-	/*cursor: url(windows-98/Cursor79.cur), auto;*/
-}
-
-div p {
-	margin-bottom: 16px;
-}
-
 body {
-	text-align: center;
-	background-color: black;
-	margin: auto;
+	color: #c2c2c2;
+	background-color: #000000;
 	width: 600px;
+}
+
+body, table, div {
 	font-size: 12px;
+	margin: auto;
 }
 
 /* I'd say this looks pretty good */

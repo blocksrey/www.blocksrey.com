@@ -2,21 +2,30 @@
 local function node(tag, inner)
 	local state = '
 	local children = {}
-	if tag then state = '<'..tag end
+	if tag then
+		state = '<'..tag
+	end
 	if inner then
 		state = state..'>'..inner
 	else
 		state = state..'>'
 	end
 	return {
-		set = function(attr) for k, v in next, attr do state = state:gsub('<'..tag, '<'..tag..' '..k..'='..v..') end end;
+		set = function(attr) for k, v in next, attr do
+			state = state:gsub('<'..tag, '<'..tag..' '..k..'='..v..')
+			end
+		end;
 		insert = function(child)
 			table.insert(children, child)
 			inner = true
 		end;
 		close = function()
-			for _, child in next, children do state = state..child.close() end
-			if inner then state = state..'</'..tag..'>' end
+			for _, child in next, children do
+				state = state..child.close()
+			end
+			if inner then
+				state = state..'</'..tag..'>'
+			end
 			return state
 		end
 	}
@@ -69,23 +78,34 @@ local function parseplog(path)
 	local state = file:read('a')
 	file:close()
 
+	state = state..'<title>'..title..'</title>'
+	state = state..'<link href="../blocksrey/style.css" rel=stylesheet>'
+
+	state = state..'<p align=left><a href="index.htm">Back</a></p>'
+	state = state..'<img src=../blocksrey/horizontal_rule.gif>'
+	state = state..'<p align=left><a href="'..title..'.htm"><h1>'..title..'</h1></a></p>'
+
 	--Iterate through the lines of the file, looking for headers
 	local toc = {}
-	for line in state:gmatch('%[(.-)]') do table.insert(toc, line) end
+	for line in state:gmatch('%[(.-)]') do
+		table.insert(toc, line)
+	end
 	if #toc > 0 then
-		--Build the TOC htmL
-		tochtm = '<h2>Table of Contents</h2>'
-		for i, v in next, toc do tochtm = tochtm..i..'. '..'<a href="#'..v..'">'..v..'</a><br>' end
-		tochtm = '<div class=toc>'..tochtm..'</div>'
+		tochtm = '<h2>TOC</h2>'
+		for i, v in next, toc do
+			tochtm = tochtm..i..'. '..'<a href="#'..v..'">'..v..'</a><br>'
+		end
+		tochtm = '<div align=left>'..tochtm..'</div>'
 	else
 		tochtm = ''
 	end
+	state = state..tochtm
 
 	state = state:gsub('<([%w_/%.%?%%=~&-]+%.(%w+))>', function(path, ext)
 		ext = ext:lower()
 		path = title..'/'..path
 		if ext == 'jpg' or ext == 'jpeg' or ext == 'png' or ext == 'gif' or ext == 'webp' then
-			return '<img src="'..path..'">'
+			return '<div align=center><img height=200 src="'..path..'"></div>'
 		elseif ext == 'mp4' or ext == 'ogg' or ext == 'webm' or ext == "mov" then
 			return '<video src="'..path..'" controls></video>'
 		end
@@ -95,23 +115,15 @@ local function parseplog(path)
 		return '<a href="'..title..'/'..path..'">'..path..'</a>'
 	end)
 
-	--Create paragraph headers
-	state = state:gsub('%[([^\n]+)%]', '<h2 id="%1">%1</h2>')
+	state = state:gsub('%[([^\n]+)%]', '<h2 id="%1">%1</h2>')--Create paragraph headers
+	state = (state..'\n\n'):gsub('([^\n]+)(\n\n)', '<p align=left>%1</p>')--Add <p> tags around paragraphs
 
-	--Add <p> tags around paragraphs
-	state = (state..'\n\n'):gsub('([^\n]+)(\n\n)', '<p>%1</p>')
+	state = state..'<img src=../blocksrey/horizontal_rule.gif>'
 
-	state = '<title>'..title..'</title>'..state
-	state = '<a href="'..title..'.htm"><h1>'..title..'</h1></a>'..tochtm..state
-	state = '<a href="index.htm">Back</a>'..state
-
-	state = '<div>'..state..'</div>'
-	state = '<link href="../blocksrey/style.css" rel=stylesheet>'..state
-
-	state = state..'<h2>Files contained in this Plog:</h2>'
+	state = state..'<h3>Files contained in this Plog:</h3>'
 	local listed = readclose(io.popen, 'ls "'..title..'"')--this will break if there are double quotes in the name
 	for filename in listed:gmatch('[^\n]+') do
-		state = state..'<a href="'..title..'/'..filename..'">'..filename..'</a><br>'
+		state = state..'<p align=left><a href="'..title..'/'..filename..'">'..filename..'</a></p>'
 	end
 
 	return state
@@ -136,10 +148,9 @@ end
 
 --local homehtm = node('!doctype htm')
 
-local homehtm = '<link href="../blocksrey/style.css" rel=stylesheet>'
-
-
-homehtm = '<a href="../index.htm">Back</a>'..homehtm
+local homehtm = ''
+homehtm = homehtm..'<title>Enter the Plog</title>'
+homehtm = homehtm..'<link href="../blocksrey/style.css" rel=stylesheet>'
 
 local function parse(info)
 	homehtm = homehtm..'<br><a href="'..info.title..'.htm">'..info.title..'</a>'
@@ -154,7 +165,6 @@ for title in listed:gmatch('[^\n]+') do
 	local path = title..'/'..title..'.plg'
 
 	local ploghandle = io.open(path)
-
 	if ploghandle then
 		local info = {}
 
@@ -166,12 +176,13 @@ for title in listed:gmatch('[^\n]+') do
 		handle:close()
 
 		ploghandle:close()
-	else
-		print('Error io.opening '..path)
 	end
 end
 
-homehtm = '<div>'..homehtm..'</div>'
+homehtm = homehtm..'<p align=left><a href="../index.htm">Back</a></p>'
+homehtm = homehtm..'<img src=../blocksrey/horizontal_rule.gif>'
+homehtm = homehtm..'<h2>An uncharted novel awaits you...</h2>'
+homehtm = '<div align=left>'..homehtm..'</div>'
 
 local handle = io.open('index.htm', 'w')
 handle:write(homehtm)

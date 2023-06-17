@@ -1,5 +1,7 @@
 /* blocksrey */
 
+/* d5e0e6 */
+/* bac6cc */
 /* dec7ad */
 /* f0dcc5 */
 /* f0a95d */
@@ -20,22 +22,20 @@
 	image-rendering: pixelated;
 	text-rendering: optimizeSpeed;
 	font-family: oldjap;
+	margin: 0;
 	/*cursor: url(windows-98/Cursor79.cur), auto;*/
 }
 
-/* Centered background actually isn't correct */
-html {
-	background: url(background/zwart.jpg);
-}
-
-h1, h2 {
-	margin: 0;
+div p {
+	margin-bottom: 16px;
 }
 
 body {
 	text-align: center;
+	background-color: black;
 	margin: auto;
-	width: 660px;
+	width: 600px;
+	font-size: 12px;
 }
 
 /* I'd say this looks pretty good */
@@ -46,15 +46,6 @@ a {
 
 a:visited {
 	color: #d96d5f;
-}
-
-div {
-	text-align: left;
-	margin-bottom: 8px;
-	padding: 8px;
-	background: url(zstngd_32.gif);
-	outline: #382724 solid 2px;
-	box-shadow: 0px 12px 32px black;
 }
 
 /* Puniko Software License */

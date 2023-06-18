@@ -74,10 +74,10 @@ end
 
 local function parseplog(path)
 	local state = ''
-	local title = path:gsub('\\', ''):match("/(.*)"):sub(1, -5)
+	local title = path:gsub('\\', ''):match('/(.*)'):sub(1, -5)
 	state = state..'<title>'..title..'</title>'
-	state = state..'<link href="../blocksrey/style.css" rel=stylesheet>'
-	state = state..'<a href="index.htm">Backtrack</a>'
+	state = state..'<link href=../shared/style.css rel=stylesheet>'
+	state = state..'<a href=index.htm>Backtrack</a>'
 
 	do
 		local content = readclose(io.open, path)
@@ -104,9 +104,9 @@ local function parseplog(path)
 			ext = ext:lower()
 			path = title..'/'..path
 			if ext == 'jpg' or ext == 'png' or ext == 'gif' or ext == 'webp' then
-				return '<div align=center><img height=200 src="'..path..'"></div>'
+				return '<div align=center><img height=160 src="'..path..'"></div>'
 			elseif ext == 'mp4' or ext == 'ogg' or ext == 'webm' or ext == 'mov' then
-				return '<div align=center><video height=200 src="'..path..'" controls></video></div>'
+				return '<div align=center><video height=160 src="'..path..'" controls></video></div>'
 			end
 		end)
 
@@ -124,7 +124,7 @@ local function parseplog(path)
 		state = state..content
 	end
 
-	state = state..'<img src=../blocksrey/barbed_wire.gif>'
+	state = state..'<img src=../shared/barbed_wire.gif>'
 
 	local plogfiles = ''
 	plogfiles = plogfiles..'<h3>FILES CONTAINED IN THIS PLOG</h3>'
@@ -136,7 +136,7 @@ local function parseplog(path)
 
 	state = state..plogfiles
 
-	state = state..'<div align=center><font size=1><img src=../blocksrey/barrio_logo_huge.gif align=texttop><a href=../puniko/index.htm>&copy 2022, Jeffrey Skinner. All rights reserved.</a></font></div>'
+	state = state..'<div align=center><font size=1><img src=../shared/barrio_logo_huge.gif align=texttop><a href=../puniko/index.htm>&copy 2022, Jeffrey Skinner. All rights reserved.</a></font></div>'
 
 	return state
 end
@@ -150,8 +150,8 @@ readclose(io.popen, 'rm *.htm')
 
 local homehtm = ''
 homehtm = homehtm..'<title>Enter the Plog</title>'
-homehtm = homehtm..'<link href="../blocksrey/style.css" rel=stylesheet>'
-homehtm = homehtm..'<a href="../index.htm">Backtrack</a>'
+homehtm = homehtm..'<link href=../shared/style.css rel=stylesheet>'
+homehtm = homehtm..'<a href=../index.htm>Backtrack</a>'
 
 homehtm = homehtm..'<h3 align=right>Ancient chronicles litter this asylum...</h3>'
 
@@ -174,8 +174,8 @@ end
 
 homehtm = homehtm..list
 
-homehtm = homehtm..'<img src=../blocksrey/barbed_wire.gif>'
-homehtm = homehtm..'<div align=center><font size=1><img src=../blocksrey/barrio_logo_huge.gif align=texttop><a href=../puniko/index.htm>&copy 2022, Jeffrey Skinner. All rights reserved.</a></font></div>'
+homehtm = homehtm..'<img src=../shared/barbed_wire.gif>'
+homehtm = homehtm..'<div align=center><font size=1><img src=../shared/barrio_logo_huge.gif align=texttop><a href=../puniko/index.htm>&copy 2022, Jeffrey Skinner. All rights reserved.</a></font></div>'
 
 local handle = io.open('index.htm', 'w')
 handle:write(homehtm)

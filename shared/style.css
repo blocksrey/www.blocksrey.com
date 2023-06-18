@@ -1,0 +1,35 @@
+/* blocksrey */
+
+/* d5e0e6 */
+/* bac6cc */
+/* dec7ad */
+/* f0dcc5 */
+/* f0a95d */
+/* d96d5f */
+/* 382724 */
+/* 593724 */
+/* c30400 */
+
+body {
+	color: #c2c2c2;
+	background-color: #000000;
+	width: 600px;
+}
+
+body, div, table {
+	margin: auto;
+	font-size: 12px;
+}
+
+a {
+	font-weight: bold;
+	color: #f0a95d;
+}
+
+a:visited {
+	color: #d96d5f;
+}
+
+embed {
+	background-color: #ffffff;
+}

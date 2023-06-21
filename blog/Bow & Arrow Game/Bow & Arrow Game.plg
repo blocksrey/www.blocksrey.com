@@ -1,1 +1,13 @@
-	Around 2017 I received great inspiration from the Roblox game known as Bowmen. The game felt really good because of how responsive and accurate the character controller was. Turns out all of the physics in that game aren't handled by Roblox, but rather built from scratch. This allows for precise control over how you want the game to feel.
+In 2017, I was inspired by the Roblox game known as Bowmen. The game felt really good because of how responsive and accurate the character controller was. Little did I know that all of the physics in that game were not handled by Roblox but rather built from scratch by the talented creator AxisAngle. This allowed for precise control over how the game felt.
+
+As a child, I was always inspired by AxisAngle's games like Phantom Forces, Bowmen, Accel World, gun animation games, physics simulations, etc. He was a legend in the Roblox community. I was so inspired by his Bowmen game that I ended up recreating it.
+
+<beta arrow.jpg>
+
+At the time, I was on good terms with AxisAngle's friend Quaternions, who was doing live streams for his b-hop game everyday. These streams were incredibly informative, and I learned a lot about game development from them. I would often ask Quaternions questions like "what does dot(vector, vector) mean?" and he would patiently explain it to me.
+
+With his help, I was eventually able to make a demo of Bowmen 2, my successor to bowmen. I showed Quaternions some gifs of the game and asked him to show the stream, which he did. And then AxisAngle saw it. From then on, AxisAngle was pretty surprised, and I quickly got on good terms with him.
+
+Since then, creating Bowmen 2 became my long term project. I spent countless hours perfecting the physics engine to ensure that the game felt as good as possible. I wanted players to have the same satisfying feeling that I had while playing the original Bowmen. It was a challenge, but I was determined to see it through.
+
+While I haven't gotten to it yet, I plan on adding new features to the game such as customizable characters, new weapons, and multiplayer modes. My goal is to create a game that is even better than the original while staying true to its core mechanics.

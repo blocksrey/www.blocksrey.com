@@ -8,3 +8,11 @@ A broken hourglass representing the end of time or a fist holding a skull symbol
 A rusted gear with a crack running through the middle
 
 Name of Symbol: The Broken Gear
+
+Fonts:
+Futurex Grunge
+Metal Lord
+
+
+
+Add feature to enable radio on the website

@@ -1,0 +1,6 @@
+[submodule "2204355"]
+	path = 2204355
+	url = https://github.com/blocksrey/2204355.git
+[submodule "puniko/psl"]
+	path = puniko/psl
+	url = https://github.com/blocksrey/Puniko-Software-License-Collection.git

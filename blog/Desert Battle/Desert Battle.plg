@@ -1,0 +1,13 @@
+Creating a game on Roblox can be a lot of fun - and when you're passionate about something, it can even be a labor of love. For me, the challenge was to create a game that simulated bullets and their properties as realistically as possible. I wanted players to feel like they were in the heat of a real-life gunfight - something that would make the game more thrilling and, ultimately, a lot more fun to play.
+
+To make the physics as realistic as possible, I started by researching how bullets travel through the air. I looked at everything from supersonic bullet crack sounds to the way bullets deform and break apart upon impact. I wanted players to experience the same thrill that they would get from shooting a real gun - which meant that the game needed to be as lifelike as possible.
+
+One of the key things I focused on was creating a weapon that could lock onto targets in motion. This meant creating a Phalanx CIWS system (close-in weapon system) that would track targets automatically. This was a really hard problem - and it meant that I had to use a quartic polynomial solver. In simple terms, the system that allows the Phalanx to track targets is a complex mathematical equation that needs to be solved in real-time. It's a lot like the system used in fighter jets to track incoming missiles.
+
+<CIWS old.jpg>
+
+But the challenge was worth it. With the Phalanx CIWS system, players can track moving targets even from a great distance. This makes the game feel more realistic and engaging - and it's just one of the many features that make the game unique.
+
+Another key feature of the game is the way it simulates bullet trajectories. I spent a lot of time working on this aspect of the game, and it included everything from taking into account factors like wind resistance and bullet drop to incorporating supersonic bullet crack sounds when bullets pass the camera. This level of detail meant that players got a more complete experience of what it's like to fire a real-life gun.
+
+Overall, creating this game on Roblox was a super-interesting experience. It was challenging and sometimes frustrating, but seeing the final product made it all worthwhile. With realistic bullet trajectories and a Phalanx CIWS system that tracks moving targets as they approach, players can enjoy an experience that feels real and engaging. Whether you're into first-person shooters or just enjoy complex game mechanics, this game has something for everyone.

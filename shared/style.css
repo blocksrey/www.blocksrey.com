@@ -9,25 +9,47 @@
 /* 382724 */
 /* 593724 */
 /* c30400 */
+/* d0d0d0 */
+
+/* rust orange: bd5725 */
+/* rust gray: 6e634b */
+/* rust brown: 4a3427 */
+/* rust black: 27221c */
+/* rust green: 3c412c */
+/* stainless steel: b4bdc7 */
+
+@font-face {
+	src: url(fonts/Clique-Serif.woff2);
+	font-family: rust;
+}
 
 body {
-	color: #c2c2c2;
+	color: #bd5725; /* this actually looks good for moody things */
+	color: #c4c4c4;
 	background-color: #000000;
 	width: 600px;
 }
 
-body, div, table {
+ol, ul, li {
 	margin: auto;
-	font-size: 12px;
+}
+body, div, table {
+	font-size: 13px;
+	font-family: rust;
+}
+
+body {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 a {
 	font-weight: bold;
-	color: #f0a95d;
+	color: #bd5725;
 }
 
 a:visited {
-	color: #d96d5f;
+	color: #b4bdc7;
 }
 
 embed {

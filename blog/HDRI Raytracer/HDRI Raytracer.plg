@@ -1,0 +1,21 @@
+Making a raytracer can seem daunting at first, but with a little bit of patience and a lot of enthusiasm, it can be a very rewarding experience. Recently, I've been working on a simple raytracer that exports images to ppm format and supports HDRIs. I also created reflective spheres that look pretty, and the best part is that it's all written using the C standard library and doesn't depend on anything other than that. While it's not a real-time raytracer, which means that images can't be rendered in real time, seeing the final results is always exhilarating.
+
+So, what is a raytracer? It's a software that simulates the physical aspects of light and how it interacts with objects in a scene. A raytracer shoots out rays from a camera through a scene and calculates how those rays interact with different objects in the scene, ultimately resulting in a photorealistic image.
+
+<HDRI close.jpg>
+
+The first step in making a raytracer is understanding the basics of 3D geometry and linear algebra. You need to understand how to represent a 3D object in space with vectors and matrices, as well as how to calculate vector operations such as dot products, cross products, and vector normalization. This is crucial because the raytracer will rely heavily on these operations to determine the position, orientation, and shading of objects.
+
+Once you have a basic grounding in 3D geometry, you can start building the raytracer by creating a scene and a camera. The scene will contain all the objects that appear in the final rendered image, including lights, spheres, planes, and any other geometry you want to include. The camera is simply a set of coordinates that define the position and orientation of the viewpoint from which the image will be rendered.
+
+After creating the scene and the camera, the next step is to calculate the intersection of rays shot out by the camera and the objects in the scene. Each ray is a vector from the camera position to a point on the screen. If this ray intersects with an object in the scene, the raytracer calculates the color and shading of that point and writes it to the appropriate pixel in the image.
+
+The final step is to export the image in ppm format, which is a simple file format for storing images. The advantage of ppm format is that it's easy to create and read with just a few lines of code and doesn't require any external libraries.
+
+One of the most exciting aspects of creating a raytracer is adding features that help add realism to the final image. HDRIs are one such feature. They allow for complex lighting setups that would be difficult to simulate with traditional lighting models.
+
+<bayer.gif>
+
+Another way to add realism is to create reflective objects, such as the spheres I created. Reflective objects reflect the surrounding environment, creating a more accurate representation of the scene. Creating reflective objects is a little more challenging than creating non-reflective ones as it requires special calculations, such as ray tracing reflections and refractions.
+
+In conclusion, creating a raytracer that exports images to ppm format is a fun and rewarding experience that requires a good grounding in 3D geometry and linear algebra. Adding features such as HDRIs and reflective objects can help enhance the realism of the final image. While it's not a real-time raytracer, it's still a valuable proof of concept, and seeing the final results is always a thrilling experience.

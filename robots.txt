@@ -1,43 +1,44 @@
-User-agent: *
-Disallow: /.git
-Disallow: /2204355
-Disallow: /as/bumps
-Disallow: /blocksrey/88x31
-Disallow: /blocksrey/background
-Disallow: /blocksrey/quake
-Disallow: /blog/Aerodynamics in Roblox
-Disallow: /blog/B-Hop Physics
-Disallow: /blog/Bad Dream Encounter
-Disallow: /blog/Blog Page Generator
-Disallow: /blog/Bow & Arrow Game
-Disallow: /blog/Broken Laptop turns into Server
-Disallow: /blog/Desert Battle
-Disallow: /blog/F-15 Simulator
-Disallow: /blog/Framerate-Independent Springs
-Disallow: /blog/HDRI Raytracer
-Disallow: /blog/Helicopter Simulator
-Disallow: /blog/Jailbreak v Phantom Forces
-Disallow: /blog/Japan Software Renderer
-Disallow: /blog/Limbs with Inverse Kinematics
-Disallow: /blog/Missile Guidance in Roblox
-Disallow: /blog/Motion Blur in Minecraft
-Disallow: /blog/Old Account Emails
-Disallow: /blog/Oscilloscope
-Disallow: /blog/P.T. Remake
-Disallow: /blog/Plogger
-Disallow: /blog/Potential Anomoly 1
-Disallow: /blog/Procedural Animations
-Disallow: /blog/Promoting Cohesiveness with Divs
-Disallow: /blog/Ramen Mathematics
-Disallow: /blog/Realistic Car Physics in Roblox
-Disallow: /blog/Roblox Trade Currency Incident
-Disallow: /blog/Snow Simulation in Roblox
-Disallow: /blog/TechWise Summer Project
-Disallow: /blog/The AI Singularity: A Vibrator's Tale of Morse Code and Mayhem
-Disallow: /blog/misc
-Disallow: /favs
-Disallow: /icons
-Disallow: /images
-Disallow: /履歴書
+user-agent: *
+disallow: /
+allow: /2204355/index.htm
+allow: /as/index.htm
+allow: /blog/Aerodynamics in Roblox.htm
+allow: /blog/B-Hop Physics.htm
+allow: /blog/Bad Dream Encounter.htm
+allow: /blog/Blog Page Generator.htm
+allow: /blog/Bow & Arrow Game.htm
+allow: /blog/Broken Laptop turns into Server.htm
+allow: /blog/Desert Battle.htm
+allow: /blog/F-15 Simulator.htm
+allow: /blog/Framerate-Independent Springs.htm
+allow: /blog/HDRI Raytracer.htm
+allow: /blog/Helicopter Simulator.htm
+allow: /blog/Jailbreak v Phantom Forces.htm
+allow: /blog/Japan Software Renderer.htm
+allow: /blog/Limbs with Inverse Kinematics.htm
+allow: /blog/Missile Guidance in Roblox.htm
+allow: /blog/Motion Blur in Minecraft.htm
+allow: /blog/Old Account Emails.htm
+allow: /blog/Oscilloscope.htm
+allow: /blog/P.T. Remake.htm
+allow: /blog/Potential Anomoly 1.htm
+allow: /blog/Procedural Animations.htm
+allow: /blog/Promoting Cohesiveness with Divs.htm
+allow: /blog/Ramen Mathematics.htm
+allow: /blog/Realistic Car Physics in Roblox.htm
+allow: /blog/Roblox Trade Currency Incident.htm
+allow: /blog/Snow Simulation in Roblox.htm
+allow: /blog/TechWise Summer Project.htm
+allow: /blog/The AI Singularity: A Vibrator's Tale of Morse Code and Mayhem.htm
+allow: /blog/index.htm
+allow: /discord/index.htm
+allow: /dokka/index.htm
+allow: /index.htm
+allow: /puniko/index.htm
+allow: /radix/index.htm
+allow: /resume/index.htm
+allow: /resume/resume.htm
+allow: /skeeball/index.htm
+allow: /villager/index.htm
 
-Sitemap: https://www.blocksrey.com/sitemap.xml
+sitemap: https://www.blocksrey.com/sitemap.xml

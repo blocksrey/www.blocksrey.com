@@ -1,7 +1,0 @@
-{
-	"name": "blocksrey",
-	"version": "1.7.0",
-	"scripts": {
-		"build": "node sitemap-generator.js"
-	}
-}

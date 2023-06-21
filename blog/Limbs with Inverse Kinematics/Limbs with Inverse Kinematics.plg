@@ -1,0 +1,17 @@
+As a Roblox developer, one of the most important elements of creating an immersive game experience is character animation. Inverse kinematics (IK) is a technique used in computer graphics to animate articulated figures with complex limb movements. Essentially, it allows for realistic movement of characters' arms, legs, and other appendages in response to changes in the environment or player input.
+
+<bandits.jpg>
+
+To achieve this effect in my own Roblox game, I first researched the technical specifications of inverse kinematics and how it can be worked into the game engine. Once I understood the basics, I began developing my own custom IK system which could be applied to various characters within the game.
+
+One of the first scenes I created utilizing my IK system was a player holding a gun. I was able to set up the mechanics so that the player's arms would adjust based on the position of the gun – whether it was being fired, reloaded, or put away. This made the gameplay much more immersive and realistic, which is important for fully engaging the player.
+
+From there, I continued to experiment with my IK system and create various scenes that showcased realistic limb movements. For instance, I designed several scenes where characters were carrying a heavy object, and their arms would adjust accordingly, based on the weight distribution and position of the object.
+
+Ultimately, I was able to create a character controller that utilized my IK system to its fullest potential. Players could take control of their character and move about the game world freely, with their arms and legs responding realistically to any environmental changes they encountered.
+
+One of my favorite aspects of the IK system I developed is that players can even watch their own character walk around with their hands properly connected to any items they interact with. This added level of detail helps to keep players fully immersed in the game world, encouraging them to continue playing and engaging with the game's mechanics and story.
+
+Overall, developing my own custom IK system in Roblox was a challenging but rewarding process. It added an essential layer of realism to the game, helping to fully immerse players in the world I created. By taking on this challenge, I was able to create a polished and compelling game experience that players could enjoy for hours on end.
+
+<chase.jpg>

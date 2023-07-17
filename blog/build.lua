@@ -149,7 +149,7 @@ local function parseplog(path)
 			path = title..'/'..path
 			if ext == 'jxl' or ext == 'jpg' or ext == 'png' or ext == 'gif' or ext == 'webp' then
 				return '<div align=center><img height=140 src="'..path..'"></div>'
-			elseif ext == 'mkv' or ext == 'mp4' then
+			elseif ext == 'mkv' or ext == 'mp4' or ext == 'avi' then
 				return '<div align=center><video height=140 src="'..path..'" controls loop></video></div>'
 			elseif ext == 'flac' or ext == 'ogg' or ext == 'mp3' then
 				return '<div align=center><audio src="'..path..'"></audio></div>'
